@@ -1,0 +1,32 @@
+{
+  "versions": [
+    {
+      "version": "version-ddf602d9cfe44005",
+      "fileType": "json",
+      "build": "c00226054bd8a3ff",
+      "dumpedAt": "13/08/2026 00:59:02",
+      "localVersion": "version-ddf602d9cfe44005",
+      "source": "archive/version-ddf602d9cfe44005.json",
+      "files": {
+        "json": "archive/version-ddf602d9cfe44005.json",
+        "hpp": "archive/version-ddf602d9cfe44005.hpp",
+        "txt": "archive/version-ddf602d9cfe44005.txt"
+      },
+      "status": "current"
+    },
+    {
+      "version": "version-d584fb6c717a43d9",
+      "fileType": "json",
+      "build": "dad3a67bcf052122",
+      "dumpedAt": "12/08/2026 20:12:42",
+      "localVersion": "version-d584fb6c717a43d9",
+      "source": "archive/version-d584fb6c717a43d9.json",
+      "files": {
+        "json": "archive/version-d584fb6c717a43d9.json",
+        "hpp": "archive/version-d584fb6c717a43d9.hpp",
+        "txt": "archive/version-d584fb6c717a43d9.txt"
+      },
+      "status": "archived"
+    }
+  ]
+}
