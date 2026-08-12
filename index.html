@@ -1,0 +1,454 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="Roblox external offsets reference">
+  <title>Roblox External Offsets</title>
+  <style>
+    :root {
+      --bg: #0d1117;
+      --surface: #111820;
+      --surface-2: #18212b;
+      --border: #293542;
+      --text: #d9e2ea;
+      --muted: #8b98a5;
+      --faint: #657482;
+      --accent: #8fb8d8;
+      --value: #d3a46c;
+      --string: #82c7b1;
+      --mono: ui-monospace, "Cascadia Code", Consolas, "SFMono-Regular", monospace;
+      --sans: system-ui, -apple-system, "Segoe UI", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    html { background: var(--bg); }
+    body { height: 100vh; min-height: 0; margin: 0; overflow: hidden; color: var(--text); background: var(--bg); font: 13px/1.45 var(--sans); }
+    button, input { font: inherit; }
+    button { cursor: pointer; }
+    a { color: var(--accent); }
+
+    .wrap { width: min(1600px, calc(100% - 56px)); margin: 0 auto; }
+    body > .wrap { height: calc(100vh - 59px); min-height: 0; display: flex; flex-direction: column; }
+    header { border-bottom: 1px solid var(--border); background: var(--surface); }
+    .header-row { display: flex; align-items: center; gap: 15px; min-height: 58px; }
+    h1 { margin: 0; color: var(--text); font: 600 16px var(--mono); letter-spacing: .01em; }
+    h1 span { color: var(--accent); font-weight: 400; }
+    .header-meta { display: flex; gap: 16px; margin-left: auto; color: var(--muted); font: 11px var(--mono); }
+    .header-meta b { color: var(--text); font-weight: 400; }
+    .theme-toggle { padding: 4px 7px; border: 1px solid var(--border); border-radius: 2px; color: var(--muted); background: transparent; font: 10px var(--mono); }
+    .theme-toggle:hover, .theme-toggle:focus-visible { border-color: var(--accent); color: var(--text); }
+
+    .intro { display: flex; flex: 0 0 auto; align-items: baseline; gap: 16px; padding: 42px 0 24px; border-bottom: 1px solid var(--border); }
+    .intro h2 { margin: 0; color: #edf3f7; font: 500 25px var(--mono); letter-spacing: -.02em; }
+    .intro p { margin: 0; color: var(--muted); font-size: 12px; }
+    .source { margin-left: auto; color: var(--faint); font: 10px var(--mono); }
+
+    .toolbar { display: flex; align-items: center; gap: 8px; padding: 14px 0; }
+    .search-wrap { flex: 1; }
+    input[type="search"] { width: 100%; padding: 8px 10px; border: 1px solid var(--border); border-radius: 2px; outline: 0; color: var(--text); background: var(--surface); font: 12px var(--mono); }
+    input[type="search"]::placeholder { color: var(--faint); }
+    input[type="search"]:focus { border-color: var(--accent); }
+    .toolbar button, .file-select select { padding: 8px 9px; border: 1px solid var(--border); border-radius: 2px; color: var(--muted); background: var(--surface); font: 10px var(--mono); }
+    .toolbar button:hover, .toolbar button:focus-visible, .file-select select:focus { border-color: var(--accent); color: var(--text); }
+    .file-select { display: flex; align-items: center; gap: 6px; color: var(--faint); font: 10px var(--mono); text-transform: uppercase; }
+    .file-select select { outline: 0; color: var(--text); background: var(--surface-2); }
+    #status { min-width: 80px; color: var(--muted); font: 10px var(--mono); text-align: right; }
+
+    .list-label { display: flex; justify-content: space-between; padding: 8px 10px; border: 1px solid var(--border); color: var(--muted); background: var(--surface); font: 10px var(--mono); text-transform: uppercase; }
+    .list-label span:last-child { color: var(--faint); }
+    #content { padding: 10px 0 45px; }
+    .ns-card { margin-bottom: 7px; border: 1px solid var(--border); background: var(--surface); }
+    .ns-head { display: flex; align-items: center; gap: 9px; width: 100%; padding: 9px 10px; border: 0; color: var(--text); background: var(--surface); text-align: left; }
+    .ns-head:hover, .ns-head:focus-visible { background: var(--surface-2); }
+    .caret { width: 10px; color: var(--accent); font: 11px var(--mono); transition: transform .12s ease; }
+    .ns-card.collapsed .caret { transform: rotate(-90deg); }
+    .ns-head code { color: var(--accent); font: 600 12px var(--mono); }
+    .ns-head .count { margin-left: auto; color: var(--faint); font: 10px var(--mono); }
+    table { width: 100%; border-collapse: collapse; font: 12px var(--mono); }
+    tbody { display: none; }
+    .ns-card:not(.collapsed) tbody { display: table-row-group; }
+    th { padding: 6px 10px; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); color: var(--faint); background: var(--surface-2); font-size: 10px; font-weight: 400; text-align: left; }
+    td { padding: 7px 10px; border-bottom: 1px solid rgba(42,51,61,.65); }
+    tbody tr:hover td { background: rgba(143,184,216,.045); }
+    tr:last-child td { border-bottom: 0; }
+    td.name { width: 44%; color: var(--text); }
+    td.hex { color: var(--value); }
+    td.dec { color: var(--muted); }
+    td.str { color: var(--string); }
+    .copy { padding: 2px 6px; border: 1px solid var(--border); border-radius: 2px; color: var(--faint); background: transparent; font: 10px var(--mono); }
+    .copy:hover, .copy:focus-visible { border-color: var(--accent); color: var(--accent); }
+    .copy.copied { border-color: var(--string); color: var(--string); }
+    #empty { padding: 35px 0; color: var(--muted); font: 12px var(--mono); text-align: center; }
+
+    .workspace { display: grid; flex: 1 1 auto; grid-template-columns: 290px minmax(0, 1fr); gap: 28px; align-items: stretch; min-height: 0; padding-top: 22px; overflow: hidden; }
+    main { min-width: 0; min-height: 0; overflow-y: auto; overscroll-behavior: contain; scrollbar-color: var(--border) transparent; }
+    .archive { align-self: stretch; min-height: 0; margin: 0; overflow-y: auto; overscroll-behavior: contain; border: 1px solid var(--border); background: var(--surface); scrollbar-color: var(--border) transparent; }
+    .archive-head { display: block; padding: 18px 16px 15px; border-bottom: 1px solid var(--border); }
+    .archive-head h2 { margin: 0; color: var(--text); font: 500 16px var(--mono); }
+    .archive-head p { margin: 6px 0 0; color: var(--muted); font-size: 11px; }
+    .archive-count { display: block; margin-top: 10px; color: var(--faint); font: 10px var(--mono); }
+    .archive-layout { display: block; min-height: 185px; background: var(--surface); }
+    .archive-list { border-right: 0; }
+    .archive-search { width: 100%; padding: 10px 12px; border: 0; border-bottom: 1px solid var(--border); outline: 0; color: var(--text); background: var(--surface-2); font: 11px var(--mono); }
+    .archive-search::placeholder { color: var(--faint); }
+    .archive-entry { display: flex; align-items: center; justify-content: space-between; gap: 10px; width: 100%; padding: 12px 14px; border: 0; border-bottom: 1px solid rgba(42,51,61,.65); color: var(--muted); background: transparent; text-align: left; }
+    .archive-entry:hover, .archive-entry.active { color: var(--text); background: var(--surface-2); }
+    .archive-entry.active { box-shadow: inset 2px 0 var(--accent); }
+    .archive-version { display: block; overflow: hidden; color: inherit; font: 11px var(--mono); text-overflow: ellipsis; white-space: nowrap; }
+    .archive-entry.active .archive-version { color: var(--accent); }
+    .archive-tag { flex: 0 0 auto; color: var(--faint); font: 9px var(--mono); text-transform: uppercase; }
+    .archive-detail { padding: 18px 16px; border-top: 1px solid var(--border); }
+    .archive-detail .detail-label { margin-bottom: 8px; color: var(--faint); font: 10px var(--mono); text-transform: uppercase; }
+    .archive-detail h3 { margin: 0 0 15px; color: var(--accent); font: 600 14px var(--mono); overflow-wrap: anywhere; }
+    .detail-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px 25px; }
+    .detail-item span { display: block; margin-bottom: 3px; color: var(--faint); font: 10px var(--mono); text-transform: uppercase; }
+    .detail-item b { color: var(--text); font: 11px var(--mono); font-weight: 400; overflow-wrap: anywhere; }
+    .archive-empty { padding: 16px 10px; color: var(--faint); font: 10px var(--mono); }
+    footer { display: flex; flex: 0 0 auto; justify-content: space-between; gap: 12px; padding: 14px 0 25px; border-top: 1px solid var(--border); color: var(--faint); font: 10px var(--mono); }
+
+    body[data-theme="light"] {      --bg: #f4f6f8; --surface: #fff; --surface-2: #e8edf1; --border: #cbd4dc; --text: #1e2a34; --muted: #5b6d7b; --faint: #8797a3; --accent: #236da4; --value: #9b5b20; --string: #187561; }
+    body[data-theme="light"] header { background: var(--surface); }
+
+    @media (max-width: 650px) {
+      body { height: auto; min-height: 100vh; overflow: auto; }
+      .wrap { width: min(100% - 24px, 720px); }
+      body > .wrap { height: auto; display: block; }
+      .header-meta { display: none; }
+      .intro { display: block; }
+      .intro p { margin-top: 7px; }
+      .source { display: block; margin: 7px 0 0; }
+      .toolbar { flex-wrap: wrap; }
+      .workspace { display: block; min-height: 0; padding-top: 22px; overflow: visible; }
+      .archive { max-height: 42vh; min-height: 0; margin-bottom: 24px; overflow-y: auto; }
+      main { overflow: visible; }
+      .archive-list { border-right: 0; border-bottom: 1px solid var(--border); }
+      .search-wrap { flex-basis: 100%; }
+      #status { margin-left: auto; }
+      th, td { padding-right: 7px; padding-left: 7px; }
+      td.name { width: 37%; overflow-wrap: anywhere; }
+      footer { display: block; }
+      footer span { display: block; margin-bottom: 5px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap header-row">
+      <h1>RXCHIE Offsets</h1>
+      <div class="header-meta">
+        <span>dumped with <b>RXDump</b></span>
+        <span>roblox version <b id="robloxVersion">—</b></span>
+        <span>dumped at <b id="statTime">—</b></span>
+        <span>total offsets <b id="statOffsets">—</b></span>
+      </div>
+      <button class="theme-toggle" type="button" id="themeToggle" aria-pressed="false">light mode</button>
+    </div>
+  </header>
+
+  <div class="wrap">
+    <section class="intro">
+      <h2>Offsets</h2>
+      <p>External offsets for Roblox. Select a source file to inspect its current values.</p>
+      <span class="source" id="robloxVersionMobile">loading</span>
+    </section>
+
+    <div class="workspace">
+    <section class="archive" id="archive" aria-labelledby="archiveTitle">
+      <div class="archive-head">
+        <div>
+          <h2 id="archiveTitle">Version archive</h2>
+          <p>Available snapshots for this offsets set.</p>
+        </div>
+        <span class="archive-count" id="archiveCount">0 versions</span>
+      </div>
+      <div class="archive-layout">
+        <div class="archive-list">
+          <input class="archive-search" type="search" id="archiveSearch" placeholder="filter versions..." autocomplete="off" aria-label="Filter archived versions">
+          <div id="archiveEntries"></div>
+        </div>
+        <div class="archive-detail" id="archiveDetail">
+          <div class="detail-label">selected snapshot</div>
+          <h3>—</h3>
+          <div class="detail-grid"></div>
+        </div>
+      </div>
+    </section>
+
+    <main id="offsets">
+      <div class="toolbar" role="search">
+        <div class="search-wrap">
+          <input type="search" id="search" placeholder="search namespaces, members, values..." autocomplete="off" aria-label="Search offsets">
+        </div>
+        <label class="file-select">file
+          <select id="fileType" aria-label="Offset file type">
+            <option value="json">Offsets.json</option>
+            <option value="hpp">Offsets.hpp</option>
+            <option value="txt">Offsets.txt</option>
+          </select>
+        </label>
+        <button type="button" id="expandAll">expand</button>
+        <button type="button" id="collapseAll">collapse</button>
+        <span id="status" aria-live="polite"></span>
+      </div>
+      <div class="list-label"><span>Namespace / member</span><span>Hex / decimal</span></div>
+      <div id="content"></div>
+      <p id="empty" hidden>no offsets match the search.</p>
+    </main>
+
+    </div>
+
+    <footer>
+      <span>source <b id="statSource">—</b></span>
+      <span>Generated by <strong>RXCHIE</strong> · offsets by <a href="https://offsets.imtheo.lol/" target="_blank" rel="noopener">theo</a></span>
+    </footer>
+  </div>
+
+  <script>
+    "use strict";
+
+    const $ = (id) => document.getElementById(id);
+    const state = { offsets: {}, nsOrder: [], source: "—", archive: [], archiveLoaded: false, selectedArchive: "" };
+
+    async function loadArchiveIndex() {
+      try {
+        const res = await fetch("archive/versions.json", { cache: "no-store" });
+        if (!res.ok) throw new Error(res.status);
+        const data = await res.json();
+        return Array.isArray(data) ? data : data.versions || [];
+      } catch (_) {
+        return [];
+      }
+    }
+
+    async function loadFile(fileType) {
+      const res = await fetch(`Offsets.${fileType}`, { cache: "no-store" });
+      if (!res.ok) throw new Error(res.status);
+      if (fileType === "json") return await res.json();
+      const text = await res.text();
+      return fileType === "hpp" ? parseHPP(text) : parseTXT(text);
+    }
+
+    function parseHPP(text) {
+      const offsets = {};
+      const stack = [];
+      for (const raw of text.split(/\r?\n/)) {
+        const line = raw.trim();
+        if (!line || line.startsWith("//") || line.startsWith("/*") || line.startsWith("#")) continue;
+        let match = line.match(/^namespace\s+([\w:]+)\s*\{\s*$/);
+        if (match) { stack.push(match[1]); continue; }
+        if (line === "}") { stack.pop(); continue; }
+        match = line.match(/^inline\s+(?:constexpr\s+)?uintptr_t\s+(\w+)\s*=\s*(0x[0-9a-fA-F]+|\d+)\s*;$/);
+        if (match && stack.length) {
+          const token = match[2];
+          offsets[stack.join("::") + "::" + match[1]] = token.startsWith("0x") ? parseInt(token, 16) : parseInt(token, 10);
+          continue;
+        }
+        match = line.match(/^inline\s+std::string\s+(\w+)\s*=\s*"([^"]*)"\s*;$/);
+        if (match && stack.length) offsets[stack.join("::") + "::" + match[1]] = match[2];
+      }
+      return { offsets, meta: {} };
+    }
+
+    function parseTXT(text) {
+      const offsets = {};
+      let namespace = null;
+      for (const raw of text.split(/\r?\n/)) {
+        const line = raw.trim();
+        const section = line.match(/^\[([^\]]+)\]$/);
+        if (section) {
+          namespace = section[1].toLowerCase().includes("top level") ? "Offsets" : `Offsets::${section[1]}`;
+          continue;
+        }
+        const entry = line.match(/^([A-Za-z_]\w*)\s*=\s*(0x[0-9a-fA-F]+|\d+|.+)$/);
+        if (!namespace || !entry) continue;
+        const token = entry[2].trim();
+        const value = /^0x[0-9a-fA-F]+$/.test(token)
+          ? parseInt(token, 16)
+          : /^\d+$/.test(token) ? parseInt(token, 10) : token.replace(/^"|"$/g, "");
+        offsets[namespace + "::" + entry[1]] = value;
+      }
+      return { offsets, meta: {} };
+    }
+
+    function archiveVersion(entry) {
+      return entry.version || entry.remote_version || entry.local_version || "unknown-version";
+    }
+
+    function updateArchiveCurrent(data, fileType) {
+      const meta = data.meta || data;
+      const version = meta.remote_version || data.offsets?.["Offsets::ClientVersion"] || "unknown-version";
+      const current = {
+        version,
+        fileType,
+        build: meta.local_build_id || "—",
+        dumpedAt: meta.dumped_at || "—",
+        localVersion: meta.local_version || "—",
+        source: `Offsets.${fileType}`,
+        current: true
+      };
+      const key = current.version;
+      state.archive = [current, ...state.archive.filter((entry) => archiveVersion(entry) !== key)];
+      state.selectedArchive = key;
+    }
+
+    function renderArchive() {
+      const query = ($("archiveSearch").value || "").trim().toLowerCase();
+      const entries = state.archive.filter((entry) => {
+        const label = `${archiveVersion(entry)} ${entry.fileType || "json"}`.toLowerCase();
+        return label.includes(query);
+      });
+      $("archiveCount").textContent = `${state.archive.length} version${state.archive.length === 1 ? "" : "s"}`;
+      const host = $("archiveEntries");
+      host.innerHTML = "";
+      if (!entries.length) {
+        host.innerHTML = `<div class="archive-empty">no archived versions match.</div>`;
+        return;
+      }
+      for (const entry of entries) {
+        const key = archiveVersion(entry);
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = `archive-entry${key === state.selectedArchive ? " active" : ""}`;
+        button.innerHTML = `<span class="archive-version">${esc(archiveVersion(entry))}</span><span class="archive-tag">${esc(entry.fileType || "json")}${entry.current ? " · current" : ""}</span>`;
+        button.addEventListener("click", () => {
+          state.selectedArchive = key;
+          renderArchive();
+        });
+        host.appendChild(button);
+      }
+
+      const selected = state.archive.find((entry) => archiveVersion(entry) === state.selectedArchive) || entries[0];
+      const detail = $("archiveDetail");
+      detail.innerHTML = `<div class="detail-label">selected snapshot</div><h3>${esc(archiveVersion(selected))}</h3><div class="detail-grid"><div class="detail-item"><span>file</span><b>Offsets.${esc(selected.fileType || "json")}</b></div><div class="detail-item"><span>status</span><b>${selected.current ? "current" : "archived"}</b></div><div class="detail-item"><span>build</span><b>${esc(selected.build || "—")}</b></div><div class="detail-item"><span>dumped</span><b>${esc(selected.dumpedAt || "—")}</b></div></div>`;
+    }
+
+    async function load() {
+      const fileType = $("fileType").value;
+      let data;
+      try {
+        data = await loadFile(fileType);
+        state.source = `Offsets.${fileType}`;
+      } catch (_) {
+        $("status").textContent = `unable to load Offsets.${fileType}`;
+        return;
+      }
+
+      if (!state.archiveLoaded) {
+        state.archive = await loadArchiveIndex();
+        state.archiveLoaded = true;
+      }
+      const meta = data.meta || data;
+      state.offsets = data.offsets || {};
+      const namespaces = new Set();
+      for (const key of Object.keys(state.offsets)) {
+        if (key.includes("::")) namespaces.add(key.slice(0, key.lastIndexOf("::")));
+      }
+      state.nsOrder = [...namespaces];
+
+      const version = state.offsets["Offsets::ClientVersion"];
+      const displayedVersion = meta.remote_version || version || "—";
+      $("robloxVersion").textContent = displayedVersion;
+      $("robloxVersionMobile").textContent = displayedVersion;
+      $("statOffsets").textContent = Object.keys(state.offsets).length;
+      $("statTime").textContent = meta.dumped_at || "—";
+      $("statSource").textContent = state.source;
+      updateArchiveCurrent(data, fileType);
+
+      render();
+      renderArchive();
+    }
+
+    $("search").addEventListener("input", render);
+    $("fileType").addEventListener("change", load);
+    $("archiveSearch").addEventListener("input", renderArchive);
+
+    const esc = (value) => String(value).replace(/[&<>"']/g, (char) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[char]));
+
+    function rowHTML(ns, name, value) {
+      const isString = typeof value === "string";
+      const renderedValue = isString
+        ? `<td class="str">"${esc(value)}"</td><td class="dec"></td>`
+        : `<td class="hex">0x${value.toString(16).toUpperCase()}</td><td class="dec">${value}</td>`;
+      const copyValue = isString ? value : "0x" + value.toString(16).toUpperCase();
+      return `<tr><td class="name">${esc(name)}</td>${renderedValue}<td><button class="copy" data-ref="${esc(ns)}::${esc(name)}" data-val="${esc(copyValue)}">copy</button></td></tr>`;
+    }
+
+    function render() {
+      const query = ($("search").value || "").trim().toLowerCase();
+      const host = $("content");
+      host.innerHTML = "";
+      let visible = 0;
+
+      for (const ns of state.nsOrder) {
+        const entries = Object.entries(state.offsets)
+          .filter(([key]) => key.includes("::") && key.slice(0, key.lastIndexOf("::")) === ns)
+          .map(([key, value]) => [key.slice(key.lastIndexOf("::") + 2), value]);
+        const namespaceMatches = ns.toLowerCase().includes(query);
+        const rows = entries.filter(([name, value]) => namespaceMatches || name.toLowerCase().includes(query) || String(value).toLowerCase().includes(query));
+        if (!rows.length) continue;
+        visible += rows.length;
+
+        const card = document.createElement("section");
+        card.className = "ns-card";
+        card.innerHTML = `<button class="ns-head" type="button" aria-expanded="true"><span class="caret">▾</span><code>${esc(ns)}</code><span class="count">${rows.length} entries</span></button><table><thead><tr><th>member</th><th>hex</th><th>dec</th><th></th></tr></thead><tbody>${rows.map(([name, value]) => rowHTML(ns, name, value)).join("")}</tbody></table>`;
+        card.querySelector(".ns-head").addEventListener("click", (event) => {
+          const button = event.currentTarget;
+          const collapsed = card.classList.toggle("collapsed");
+          button.setAttribute("aria-expanded", String(!collapsed));
+        });
+        host.appendChild(card);
+      }
+
+      $("empty").hidden = visible > 0;
+      $("status").textContent = visible ? `${visible} / ${Object.keys(state.offsets).length}` : "no matches";
+    }
+
+    function setAllCollapsed(collapsed) {
+      document.querySelectorAll(".ns-card").forEach((card) => {
+        card.classList.toggle("collapsed", collapsed);
+        card.querySelector(".ns-head").setAttribute("aria-expanded", String(!collapsed));
+      });
+    }
+
+    $("expandAll").addEventListener("click", () => setAllCollapsed(false));
+    $("collapseAll").addEventListener("click", () => setAllCollapsed(true));
+
+    function applyTheme(theme) {
+      const isLight = theme === "light";
+      document.body.dataset.theme = isLight ? "light" : "night";
+      $("themeToggle").textContent = isLight ? "night mode" : "light mode";
+      $("themeToggle").setAttribute("aria-pressed", String(isLight));
+    }
+
+    applyTheme(localStorage.getItem("rxchie-theme") === "light" ? "light" : "night");
+    $("themeToggle").addEventListener("click", () => {
+      const nextTheme = document.body.dataset.theme === "light" ? "night" : "light";
+      localStorage.setItem("rxchie-theme", nextTheme);
+      applyTheme(nextTheme);
+    });
+
+    document.addEventListener("click", async (event) => {
+      const button = event.target.closest(".copy");
+      if (!button) return;
+      const text = `${button.dataset.ref} = ${button.dataset.val};`;
+      try {
+        await navigator.clipboard.writeText(text);
+      } catch (_) {
+        const area = document.createElement("textarea");
+        area.value = text;
+        document.body.appendChild(area);
+        area.select();
+        document.execCommand("copy");
+        area.remove();
+      }
+      button.textContent = "copied";
+      button.classList.add("copied");
+      setTimeout(() => { button.textContent = "copy"; button.classList.remove("copied"); }, 1200);
+    });
+
+    load();
+  </script>
+</body>
+</html>
