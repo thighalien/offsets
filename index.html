@@ -276,7 +276,7 @@
         const line = raw.trim();
         const section = line.match(/^\[([^\]]+)\]$/);
         if (section) {
-          namespace = section[1].toLowerCase().includes("top level") ? "Offsets" : `Offsets::${section[1]}`;
+          namespace = section[1] === "Offsets" ? "Offsets" : `Offsets::${section[1]}`;
           continue;
         }
         const entry = line.match(/^([A-Za-z_]\w*)\s*=\s*(0x[0-9a-fA-F]+|\d+|.+)$/);

@@ -1,5 +1,4 @@
---- remote offsets (namespace Offsets) ---
-[Offsets (top level)]
+[Offsets]
   ClientVersion          = version-ddf602d9cfe44005
 
 [AirProperties]
@@ -527,7 +526,6 @@
   Primitives             = 0x290
   worldStepsPerSec       = 0x708
 
---- locally dumped offsets (namespace Offsets) ---
 [WorldRoot]
   RaycastBoundDesc       = 0x82012A0
   RaycastBoundFn         = 0x80
