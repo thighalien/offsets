@@ -315,14 +315,14 @@
     }
 
     function updateArchiveCurrent(data, fileType) {
-      const meta = data.meta || data;
-      const version = meta.remote_version || data.offsets?.["Offsets::ClientVersion"] || "unknown-version";
+      const version = data.offsets?.["Offsets::ClientVersion"] || "unknown-version";
+      const manifestEntry = state.archive.find((entry) => archiveVersion(entry) === version);
       const current = {
         version,
         fileType,
-        build: meta.local_build_id || "—",
-        dumpedAt: meta.dumped_at || "—",
-        localVersion: meta.local_version || "—",
+        build: manifestEntry?.build || "—",
+        dumpedAt: manifestEntry?.dumpedAt || "—",
+        localVersion: manifestEntry?.localVersion || "—",
         source: `Offsets.${fileType}`,
         current: true
       };
@@ -379,7 +379,6 @@
         state.archive = await loadArchiveIndex();
         state.archiveLoaded = true;
       }
-      const meta = data.meta || data;
       state.offsets = data.offsets || {};
       const namespaces = new Set();
       for (const key of Object.keys(state.offsets)) {
@@ -388,13 +387,14 @@
       state.nsOrder = [...namespaces];
 
       const version = state.offsets["Offsets::ClientVersion"];
-      const displayedVersion = meta.remote_version || version || "—";
+      const displayedVersion = version || "—";
       $("robloxVersion").textContent = displayedVersion;
       $("robloxVersionMobile").textContent = displayedVersion;
       $("statOffsets").textContent = Object.keys(state.offsets).length;
-      $("statTime").textContent = meta.dumped_at || "—";
-      $("statSource").textContent = state.source;
       updateArchiveCurrent(data, fileType);
+      const currentEntry = state.archive.find((entry) => archiveVersion(entry) === version);
+      $("statTime").textContent = currentEntry?.dumpedAt || "—";
+      $("statSource").textContent = state.source;
 
       renderSource();
       render();

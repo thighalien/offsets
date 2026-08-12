@@ -1,12 +1,3 @@
-RXCHIE Custom Offsets
-=====================
-Credits        : offsets by theo - https://offsets.imtheo.lol/
-Remote source  : https://offsets.imtheo.lol/
-Dumped With    : RXDump
-Roblox Version : version-ddf602d9cfe44005
-Dumped At      : 13/08/2026 01:06:05
-Total Offsets  : 415
-
 --- remote offsets (namespace Offsets) ---
 [Offsets (top level)]
   ClientVersion          = version-ddf602d9cfe44005
