@@ -58,6 +58,14 @@
 
     .list-label { display: flex; justify-content: space-between; padding: 8px 10px; border: 1px solid var(--border); color: var(--muted); background: var(--surface); font: 10px var(--mono); text-transform: uppercase; }
     .list-label span:last-child { color: var(--faint); }
+    .view-mode { display: flex; gap: 0; }
+    .view-mode button { padding: 8px 9px; border: 1px solid var(--border); color: var(--muted); background: var(--surface); font: 10px var(--mono); }
+    .view-mode button + button { border-left: 0; }
+    .view-mode button:first-child { border-radius: 2px 0 0 2px; }
+    .view-mode button:last-child { border-radius: 0 2px 2px 0; }
+    .view-mode button:hover, .view-mode button:focus-visible, .view-mode button.active { border-color: var(--accent); color: var(--text); background: var(--surface-2); }
+    .source-panel { min-height: 100%; margin: 10px 0 45px; padding: 18px 20px; overflow: auto; border: 1px solid var(--border); color: var(--text); background: var(--surface); font: 12px/1.55 var(--mono); tab-size: 4; white-space: pre; }
+    .source-panel code { font: inherit; }
     #content { padding: 10px 0 45px; }
     .ns-card { margin-bottom: 7px; border: 1px solid var(--border); background: var(--surface); }
     .ns-head { display: flex; align-items: center; gap: 9px; width: 100%; padding: 9px 10px; border: 0; color: var(--text); background: var(--surface); text-align: left; }
@@ -188,13 +196,20 @@
             <option value="txt">Offsets.txt</option>
           </select>
         </label>
+        <div class="view-mode" role="group" aria-label="Display mode">
+          <button type="button" id="sourceMode" class="active" aria-pressed="true">source</button>
+          <button type="button" id="tableMode" aria-pressed="false">table</button>
+        </div>
         <button type="button" id="expandAll">expand</button>
         <button type="button" id="collapseAll">collapse</button>
         <span id="status" aria-live="polite"></span>
       </div>
-      <div class="list-label"><span>Namespace / member</span><span>Hex / decimal</span></div>
-      <div id="content"></div>
-      <p id="empty" hidden>no offsets match the search.</p>
+      <div id="tableViewPanel" hidden>
+        <div class="list-label"><span>Namespace / member</span><span>Hex / decimal</span></div>
+        <div id="content"></div>
+        <p id="empty" hidden>no offsets match the search.</p>
+      </div>
+      <pre class="source-panel" id="sourcePanel" aria-label="Complete selected offset file"><code id="sourceCode"></code></pre>
     </main>
 
     </div>
@@ -209,7 +224,7 @@
     "use strict";
 
     const $ = (id) => document.getElementById(id);
-    const state = { offsets: {}, nsOrder: [], source: "—", archive: [], archiveLoaded: false, selectedArchive: "" };
+    const state = { offsets: {}, nsOrder: [], source: "—", rawText: "", view: "source", archive: [], archiveLoaded: false, selectedArchive: "" };
 
     async function loadArchiveIndex() {
       try {
@@ -225,9 +240,12 @@
     async function loadFile(fileType) {
       const res = await fetch(`Offsets.${fileType}`, { cache: "no-store" });
       if (!res.ok) throw new Error(res.status);
-      if (fileType === "json") return await res.json();
       const text = await res.text();
-      return fileType === "hpp" ? parseHPP(text) : parseTXT(text);
+      if (fileType === "json") {
+        const data = JSON.parse(text);
+        return { data, rawText: JSON.stringify(data, null, 2) + "\n" };
+      }
+      return { data: fileType === "hpp" ? parseHPP(text) : parseTXT(text), rawText: text };
     }
 
     function parseHPP(text) {
@@ -270,6 +288,26 @@
         offsets[namespace + "::" + entry[1]] = value;
       }
       return { offsets, meta: {} };
+    }
+
+    function renderSource() {
+      $("sourceCode").textContent = state.rawText || "Unable to load the selected source file.";
+    }
+
+    function setView(view) {
+      state.view = view;
+      const source = view === "source";
+      $("sourcePanel").hidden = !source;
+      $("tableViewPanel").hidden = source;
+      $("sourceMode").classList.toggle("active", source);
+      $("tableMode").classList.toggle("active", !source);
+      $("sourceMode").setAttribute("aria-pressed", String(source));
+      $("tableMode").setAttribute("aria-pressed", String(!source));
+      $("search").disabled = source;
+      $("search").placeholder = source ? "source view active" : "search namespaces, members, values...";
+      $("expandAll").hidden = source;
+      $("collapseAll").hidden = source;
+      if (!source) render();
     }
 
     function archiveVersion(entry) {
@@ -328,7 +366,9 @@
       const fileType = $("fileType").value;
       let data;
       try {
-        data = await loadFile(fileType);
+        const loaded = await loadFile(fileType);
+        data = loaded.data;
+        state.rawText = loaded.rawText;
         state.source = `Offsets.${fileType}`;
       } catch (_) {
         $("status").textContent = `unable to load Offsets.${fileType}`;
@@ -356,6 +396,7 @@
       $("statSource").textContent = state.source;
       updateArchiveCurrent(data, fileType);
 
+      renderSource();
       render();
       renderArchive();
     }
@@ -363,6 +404,8 @@
     $("search").addEventListener("input", render);
     $("fileType").addEventListener("change", load);
     $("archiveSearch").addEventListener("input", renderArchive);
+    $("sourceMode").addEventListener("click", () => setView("source"));
+    $("tableMode").addEventListener("click", () => setView("table"));
 
     const esc = (value) => String(value).replace(/[&<>"']/g, (char) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[char]));
 
