@@ -6,7 +6,7 @@
 // remote         : https://offsets.imtheo.lol/
 // dumped with    : RXDump
 // Roblox version : version-ddf602d9cfe44005
-// dumped at      : 13/08/2026 00:59:02
+// dumped at      : 13/08/2026 01:04:35
 // total offsets  : 415
 // =============================================================
 #include <cstdint>
