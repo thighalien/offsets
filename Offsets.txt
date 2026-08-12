@@ -5,7 +5,7 @@ Remote source  : https://offsets.imtheo.lol/
 Roblox Version : version-d584fb6c717a43d9
 Local Version  : version-d584fb6c717a43d9
 Local Build ID : dad3a67bcf052122
-Dumped At      : 12/08/2026 17:44:38
+Dumped At      : 12/08/2026 17:53:33
 
 --- remote offsets (namespace Offsets) ---
 [Offsets (top level)]
