@@ -338,8 +338,8 @@
       return ["hpp", "json", "txt"].filter((type) => entry.files?.[type] || entry.current);
     }
 
-    function updateArchiveCurrent(data, fileType) {
-      const version = data.Offsets?.["ClientVersion"] || "unknown-version";
+    function updateArchiveCurrent(data, fileType, version) {
+      version = version || "unknown-version";
       const existing = state.archive.find((entry) => archiveVersion(entry) === version);
       if (existing) {
         existing.current = true;
@@ -497,7 +497,7 @@
       try {
         const loaded = await loadFile(fileType);
         const version = detectVersion(loaded);
-        updateArchiveCurrent(loaded.data, fileType);
+        updateArchiveCurrent(loaded.data, fileType, version);
         await applyLoaded(loaded, fileType, version, `Offsets.${fileType}`, true);
       } catch (_) {
         $("status").textContent = `unable to load Offsets.${fileType}`;
