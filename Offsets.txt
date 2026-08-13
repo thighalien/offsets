@@ -1,562 +1,416 @@
-[Offsets]
-  ClientVersion          = version-ddf602d9cfe44005
-
-[AirProperties]
-  AirDensity             = 0x18
-  GlobalWind             = 0x3c
-
-[AnimationTrack]
-  Animation              = 0xb8
-  Animator               = 0x108
-  IsPlaying              = 0xa90
-  Looped                 = 0xe5
-  Speed                  = 0xd4
-  TimePosition           = 0xd8
-
-[Animator]
-  ActiveAnimations       = 0xb80
-
-[Atmosphere]
-  Color                  = 0xb8
-  Decay                  = 0xc4
-  Density                = 0xd0
-  Glare                  = 0xd4
-  Haze                   = 0xd8
-  Offset                 = 0xdc
-
-[Attachment]
-  Position               = 0xc4
-
-[BasePart]
-  CastShadow             = 0x135
-  Color3                 = 0x1a8
-  Locked                 = 0x136
-  Massless               = 0x137
-  Primitive              = 0x188
-  Reflectance            = 0x10c
-  Shape                  = 0x1b9
-  Transparency           = 0x130
-
-[Beam]
-  Attachment0            = 0x160
-  Attachment1            = 0x170
-  Brightness             = 0x180
-  CurveSize0             = 0x184
-  CurveSize1             = 0x188
-  LightEmission          = 0x18c
-  LightInfluence         = 0x190
-  Texture                = 0x140
-  TextureLength          = 0x19c
-  TextureSpeed           = 0x1a4
-  Width0                 = 0x1a8
-  Width1                 = 0x1ac
-  ZOffset                = 0x1b0
-
-[BloomEffect]
-  Enabled                = 0xb0
-  Intensity              = 0xb8
-  Size                   = 0xbc
-  Threshold              = 0xc0
-
-[BlurEffect]
-  Enabled                = 0xb0
-  Size                   = 0xb8
-
-[ByteCode]
-  Pointer                = 0x10
-  Size                   = 0x20
-
-[Camera]
-  CameraSubject          = 0xc8
-  CameraType             = 0x138
-  FieldOfView            = 0x140
-  ImagePlaneDepth        = 0x2d4
-  Position               = 0xfc
-  Rotation               = 0xd8
-  Viewport               = 0x28c
-  ViewportSize           = 0x2cc
-
-[CharacterMesh]
-  BaseTextureId          = 0xc8
-  BodyPart               = 0x148
-  MeshId                 = 0xf8
-  OverlayTextureId       = 0x128
-
-[ClickDetector]
-  MaxActivationDistance  = 0xe8
-  MouseIcon              = 0xc8
-
-[Clothing]
-  Color3                 = 0x120
-  Template               = 0x100
-
-[ColorCorrectionEffect]
-  Brightness             = 0xc4
-  Contrast               = 0xc8
-  Enabled                = 0xb0
-  TintColor              = 0xb8
-
-[ColorGradingEffect]
-  Enabled                = 0xb0
-  TonemapperPreset       = 0xb8
-
-[DataModel]
-  CreatorId              = 0x178
-  GameId                 = 0x180
-  GameLoaded             = 0x570
-  JobId                  = 0x118
-  PlaceId                = 0x188
-  PlaceVersion           = 0x1a4
-  PrimitiveCount         = 0x3b8
-  ScriptContext          = 0x440
-  ServerIP               = 0x558
-  ToRenderView1          = 0x1c0
-  ToRenderView2          = 0x8
-  ToRenderView3          = 0x28
-  Workspace              = 0x158
-  Pointer                = 0x8B79B58
-
-[DepthOfFieldEffect]
-  Enabled                = 0xb0
-  FarIntensity           = 0xb8
-  FocusDistance          = 0xbc
-  InFocusRadius          = 0xc0
-  NearIntensity          = 0xc4
-
-[DragDetector]
-  ActivatedCursorIcon    = 0x1c0
-  CursorIcon             = 0xc8
-  MaxActivationDistance  = 0xe8
-  MaxDragAngle           = 0x2a8
-  MaxDragTranslation     = 0x26c
-  MaxForce               = 0x2ac
-  MaxTorque              = 0x2b0
-  MinDragAngle           = 0x2b4
-  MinDragTranslation     = 0x278
-  ReferenceInstance      = 0x1f0
-  Responsiveness         = 0x2c0
-
-[FakeDataModel]
-  Pointer                = 0x8b79b58
-  RealDataModel          = 0x1d8
-
-[GuiBase2D]
-  AbsolutePosition       = 0x10c
-  AbsoluteRotation       = 0xe8
-  AbsoluteSize           = 0x114
-
-[GuiObject]
-  BackgroundColor3       = 0x540
-  BackgroundTransparency = 0x54c
-  BorderColor3           = 0x54c
-  Image                  = 0x988
-  LayoutOrder            = 0x580
-  Position               = 0x510
-  RichText               = 0xb88
-  Rotation               = 0xe8
-  ScreenGui_Enabled      = 0x4c4
-  Size                   = 0x530
-  Text                   = 0xdf8
-  TextColor3             = 0xea8
-  Visible                = 0x5ad
-  ZIndex                 = 0x5a4
-
-[Humanoid]
-  AutoJumpEnabled        = 0x1d4
-  AutoRotate             = 0x1d5
-  AutomaticScalingEnabled = 0x1d6
-  BreakJointsOnDeath     = 0x1d7
-  CameraOffset           = 0x128
-  DisplayDistanceType    = 0x180
-  DisplayName            = 0xb8
-  EvaluateStateMachine   = 0x1d8
-  FloorMaterial          = 0x184
-  Health                 = 0x190
-  HealthDisplayDistance  = 0x188
-  HealthDisplayType      = 0x18c
-  HipHeight              = 0x194
-  HumanoidRootPart       = 0x478
-  HumanoidState          = 0x898
-  HumanoidStateID        = 0x20
-  IsWalking              = 0x93f
-  Jump                   = 0x1da
-  JumpHeight             = 0x1a0
-  JumpPower              = 0x1a4
-  MaxHealth              = 0x1a8
-  MaxSlopeAngle          = 0x1ac
-  MoveDirection          = 0x140
-  MoveToPart             = 0x118
-  MoveToPoint            = 0x164
-  NameDisplayDistance    = 0x1b0
-  NameOcclusion          = 0x1b4
-  PlatformStand          = 0xc5
-  PlatformStatePointer   = 0x0
-  RequiresNeck           = 0x1dd
-  RigType                = 0x1c0
-  SeatPart               = 0x108
-  Sit                    = 0x1dd
-  TargetPoint            = 0x14c
-  UseJumpPower           = 0xc5
-  WalkTimer              = 0x408
-  Walkspeed              = 0x1d0
-  WalkspeedCheck         = 0x3bc
-
-[Instance]
-  ChildrenEnd            = 0x8
-  ChildrenStart          = 0x78
-  ClassBase              = 0x1b0
-  ClassDescriptor        = 0x18
-  ClassName              = 0x8
-  Name                   = 0x8
-  NameContainer          = 0x70
-  Parent                 = 0x68
-  This                   = 0x8
-
-[Lighting]
-  Ambient                = 0xd0
-  Brightness             = 0x118
-  ClockTime              = 0xc8
-  ColorShift_Bottom      = 0xe8
-  ColorShift_Top         = 0xdc
-  EnvironmentDiffuseScale = 0x11c
-  EnvironmentSpecularScale = 0x120
-  ExposureCompensation   = 0x124
-  FogColor               = 0xf4
-  FogEnd                 = 0x12c
-  FogStart               = 0x130
-  GeographicLatitude     = 0x134
-  GlobalShadows          = 0x144
-  GradientBottom         = 0x190
-  GradientTop            = 0x150
-  LightColor             = 0x15c
-  LightDirection         = 0x168
-  MoonPosition           = 0x184
-  OutdoorAmbient         = 0x100
-  Sky                    = 0x1c8
-  Source                 = 0x174
-  SunPosition            = 0x178
-
-[LocalScript]
-  ByteCode               = 0x0
-  GUID                   = 0xd0
-  Hash                   = 0x1a0
-
-[MaterialColors]
-  Asphalt                = 0x30
-  Basalt                 = 0x27
-  Brick                  = 0xf
-  Cobblestone            = 0x33
-  Concrete               = 0xc
-  CrackedLava            = 0x2d
-  Glacier                = 0x1b
-  Grass                  = 0x6
-  Ground                 = 0x2a
-  Ice                    = 0x36
-  LeafyGrass             = 0x39
-  Limestone              = 0x3f
-  Mud                    = 0x24
-  Pavement               = 0x42
-  Rock                   = 0x18
-  Salt                   = 0x3c
-  Sand                   = 0x12
-  Sandstone              = 0x21
-  Slate                  = 0x9
-  Snow                   = 0x1e
-  WoodPlanks             = 0x15
-
-[MeshContentProvider]
-  AssetID                = 0x10
-  Cache                  = 0xf0
-  LRUCache               = 0x20
-  MeshData               = 0x40
-  ToMeshData             = 0x40
-
-[MeshData]
-  FaceEnd                = 0x38
-  FaceStart              = 0x30
-  VertexEnd              = 0x8
-  VertexStart            = 0x0
-
-[MeshPart]
-  MeshId                 = 0x308
-  Texture                = 0x338
-
-[Misc]
-  Adornee                = 0xf0
-  AnimationId            = 0xc0
-  StringLength           = 0x10
-  Value                  = 0xb8
-
-[Model]
-  PrimaryPart            = 0x258
-  Scale                  = 0x144
-
-[ModuleScript]
-  ByteCode               = 0x0
-  GUID                   = 0xd0
-  Hash                   = 0x148
-  IsCoreScript           = 0x0
-
-[MouseService]
-  InputObject            = 0xf0
-  InputObject2           = 0x100
-  MousePosition          = 0xd4
-  SensitivityPointer     = 0x0
-
-[ParticleEmitter]
-  Acceleration           = 0x1e0
-  Brightness             = 0x21c
-  Drag                   = 0x220
-  Lifetime               = 0x1f4
-  LightEmission          = 0x238
-  LightInfluence         = 0x23c
-  Rate                   = 0x248
-  RotSpeed               = 0x1fc
-  Rotation               = 0x204
-  Speed                  = 0x20c
-  SpreadAngle            = 0x214
-  Texture                = 0x1c0
-  TimeScale              = 0x25c
-  VelocityInheritance    = 0x260
-  ZOffset                = 0x264
-
-[Player]
-  AccountAge             = 0x35c
-  CameraMode             = 0x370
-  DisplayName            = 0x138
-  HealthDisplayDistance  = 0x394
-  LocalPlayer            = 0x130
-  LocaleId               = 0x118
-  MaxZoomDistance        = 0x368
-  MinZoomDistance        = 0x36c
-  ModelInstance          = 0x298
-  Mouse                  = 0x11f0
-  NameDisplayDistance    = 0x3a4
-  Team                   = 0x2d8
-  TeamColor              = 0x3b0
-  UserId                 = 0x300
-
-[PlayerConfigurer]
-  Pointer                = 0x0
-
-[PlayerMouse]
-  Icon                   = 0xc8
-  Workspace              = 0x150
-
-[Primitive]
-  AssemblyAngularVelocity = 0x104
-  AssemblyLinearVelocity = 0xf8
-  Flags                  = 0x1b6
-  Material               = 0x0
-  Owner                  = 0x210
-  Position               = 0xec
-  Rotation               = 0xc8
-  Size                   = 0x1bc
-  Validate               = 0x6
-
-[PrimitiveFlags]
-  Anchored               = 0x2
-  CanCollide             = 0x8
-  CanQuery               = 0x20
-  CanTouch               = 0x10
-
-[ProximityPrompt]
-  ActionText             = 0xb0
-  Enabled                = 0x136
-  GamepadKeyCode         = 0x11c
-  HoldDuration           = 0x120
-  KeyCode                = 0x124
-  MaxActivationDistance  = 0x128
-  ObjectText             = 0xd0
-  RequiresLineOfSight    = 0x137
-
-[RenderJob]
-  FakeDataModel          = 0x38
-  RealDataModel          = 0x1d0
-  RenderView             = 0x1d8
-
-[RenderView]
-  DeviceD3D11            = 0x8
-  LightingValid          = 0x150
-  SkyValid               = 0x28d
-  VisualEngine           = 0x10
-
-[RunService]
-  HeartbeatFPS           = 0xf4
-  HeartbeatTask          = 0x3b8
-
-[Script]
-  ByteCode               = 0x0
-  GUID                   = 0xd0
-  Hash                   = 0x1a0
-
-[ScriptContext]
-  RequireBypass          = 0x0
-
-[Seat]
-  Occupant               = 0x210
-
-[Sky]
-  MoonAngularSize        = 0x244
-  MoonTextureId          = 0xc8
-  SkyboxBk               = 0xf8
-  SkyboxDn               = 0x128
-  SkyboxFt               = 0x158
-  SkyboxLf               = 0x188
-  SkyboxOrientation      = 0x238
-  SkyboxRt               = 0x1b8
-  SkyboxUp               = 0x1e8
-  StarCount              = 0x248
-  SunAngularSize         = 0x23c
-  SunTextureId           = 0x218
-
-[Sound]
-  IsPlaying              = 0x140
-  Looped                 = 0x13d
-  PlaybackSpeed          = 0x11c
-  RollOffMaxDistance     = 0x120
-  RollOffMinDistance     = 0x124
-  SoundGroup             = 0xe8
-  SoundId                = 0xc8
-  Volume                 = 0x130
-
-[SpawnLocation]
-  AllowTeamChangeOnTouch = 0x3d
-  Enabled                = 0x1e9
-  ForcefieldDuration     = 0x1e0
-  Neutral                = 0x1ea
-  TeamColor              = 0x1e4
-
-[SpecialMesh]
-  MeshId                 = 0xf8
-  Scale                  = 0xc4
-
-[StatsItem]
-  Value                  = 0xc8
-
-[SunRaysEffect]
-  Enabled                = 0xb0
-  Intensity              = 0xb8
-  Spread                 = 0xbc
-
-[SurfaceAppearance]
-  AlphaMode              = 0x290
-  Color                  = 0x278
-  ColorMap               = 0xc8
-  EmissiveMaskContent    = 0xf8
-  EmissiveStrength       = 0x294
-  EmissiveTint           = 0x284
-  MetalnessMap           = 0x128
-  NormalMap              = 0x158
-  RoughnessMap           = 0x188
-
-[TaskScheduler]
-  JobEnd                 = 0xD0
-  JobName                = 0x18
-  JobStart               = 0xC8
-  MaxFPS                 = 0xb0
-  Pointer                = 0x88B64C8
-
-[Team]
-  BrickColor             = 0xb8
-
-[Terrain]
-  GrassLength            = 0x1e8
-  MaterialColors         = 0x490
-  WaterColor             = 0x1d8
-  WaterReflectance       = 0x1f0
-  WaterTransparency      = 0x1f4
-  WaterWaveSize          = 0x1f8
-  WaterWaveSpeed         = 0x1fc
-
-[Textures]
-  Decal_Texture          = 0x180
-  Texture_Texture        = 0x180
-
-[Tool]
-  CanBeDropped           = 0x4b8
-  Enabled                = 0x4b9
-  Grip                   = 0x4ac
-  ManualActivationOnly   = 0x4ba
-  RequiresHandle         = 0x4bb
-  TextureId              = 0x360
-  Tooltip                = 0x468
-
-[UnionOperation]
-  AssetId                = 0x308
-
-[UserInputService]
-  WindowInputState       = 0x2c0
-
-[VehicleSeat]
-  MaxSpeed               = 0x228
-  SteerFloat             = 0x22c
-  ThrottleFloat          = 0x230
-  Torque                 = 0x234
-  TurnSpeed              = 0x238
-
-[VisualEngine]
-  Dimensions             = 0xae0
-  FakeDataModel          = 0xac0
-  Pointer                = 0x8136228
-  RenderView             = 0xc00
-  ViewMatrix             = 0x180
-
-[Weld]
-  Part0                  = 0x118
-  Part1                  = 0x128
-
-[WeldConstraint]
-  Part0                  = 0xb8
-  Part1                  = 0xc8
-
-[WindowInputState]
-  CapsLock               = 0x40
-  CurrentTextBox         = 0x48
-
-[Workspace]
-  CurrentCamera          = 0x498
-  DistributedGameTime    = 0x4b8
-  ReadOnlyGravity        = 0x9c0
-  World                  = 0x3f0
-
-[World]
-  AirProperties          = 0x220
-  FallenPartsDestroyHeight = 0x208
-  Gravity                = 0x210
-  Primitives             = 0x290
-  worldStepsPerSec       = 0x708
-
-[WorldRoot]
-  RaycastBoundDesc       = 0x82012A0
-  RaycastBoundFn         = 0x80
-
-[FastClusterEntity]
-  VTableRva              = 0x68CB818
-  ContextPtr             = 0x8
-  RenderQueueId          = 0x10
-  AlphaByte              = 0x14
-  MaterialPtr            = 0x20
-  DecalMaterialPtr       = 0x48
-  TechniqueArrayPtr      = 0x70
-  PrimitiveIndexArrayPtr = 0x80
-  BBoxMinX               = 0x98
-  BBoxMinY               = 0x9C
-  BBoxMinZ               = 0xA0
-  BBoxMaxX               = 0xA4
-  BBoxMaxY               = 0xA8
-  BBoxMaxZ               = 0xAC
-
-[TechniqueArray]
-  BeginOffset            = 0x0
-  EndOffset              = 0x8
-  EntryStride            = 136
-
-[MaterialLayer]
-  Stride                 = 136
-  FillModeByte           = 0x11
-  MatFlags               = 0x18
-  Param                  = 0x1C
-  Flags2                 = 0x20
-  ColorData              = 0x24
-
+Offsets::ClientVersion = version-ddf602d9cfe44005
+AirProperties::AirDensity = 0x18
+AirProperties::GlobalWind = 0x3C
+AnimationTrack::Animation = 0xB8
+AnimationTrack::Animator = 0x108
+AnimationTrack::IsPlaying = 0xA90
+AnimationTrack::Looped = 0xE5
+AnimationTrack::Speed = 0xD4
+AnimationTrack::TimePosition = 0xD8
+Animator::ActiveAnimations = 0xB80
+Atmosphere::Color = 0xB8
+Atmosphere::Decay = 0xC4
+Atmosphere::Density = 0xD0
+Atmosphere::Glare = 0xD4
+Atmosphere::Haze = 0xD8
+Atmosphere::Offset = 0xDC
+Attachment::Position = 0xC4
+BasePart::CastShadow = 0x135
+BasePart::Color3 = 0x1A8
+BasePart::Locked = 0x136
+BasePart::Massless = 0x137
+BasePart::Primitive = 0x188
+BasePart::Reflectance = 0x10C
+BasePart::Shape = 0x1B9
+BasePart::Transparency = 0x130
+Beam::Attachment0 = 0x160
+Beam::Attachment1 = 0x170
+Beam::Brightness = 0x180
+Beam::CurveSize0 = 0x184
+Beam::CurveSize1 = 0x188
+Beam::LightEmission = 0x18C
+Beam::LightInfluence = 0x190
+Beam::Texture = 0x140
+Beam::TextureLength = 0x19C
+Beam::TextureSpeed = 0x1A4
+Beam::Width0 = 0x1A8
+Beam::Width1 = 0x1AC
+Beam::ZOffset = 0x1B0
+BloomEffect::Enabled = 0xB0
+BloomEffect::Intensity = 0xB8
+BloomEffect::Size = 0xBC
+BloomEffect::Threshold = 0xC0
+BlurEffect::Enabled = 0xB0
+BlurEffect::Size = 0xB8
+ByteCode::Pointer = 0x10
+ByteCode::Size = 0x20
+Camera::CameraSubject = 0xC8
+Camera::CameraType = 0x138
+Camera::FieldOfView = 0x140
+Camera::ImagePlaneDepth = 0x2D4
+Camera::Position = 0xFC
+Camera::Rotation = 0xD8
+Camera::Viewport = 0x28C
+Camera::ViewportSize = 0x2CC
+CharacterMesh::BaseTextureId = 0xC8
+CharacterMesh::BodyPart = 0x148
+CharacterMesh::MeshId = 0xF8
+CharacterMesh::OverlayTextureId = 0x128
+ClickDetector::MaxActivationDistance = 0xE8
+ClickDetector::MouseIcon = 0xC8
+Clothing::Color3 = 0x120
+Clothing::Template = 0x100
+ColorCorrectionEffect::Brightness = 0xC4
+ColorCorrectionEffect::Contrast = 0xC8
+ColorCorrectionEffect::Enabled = 0xB0
+ColorCorrectionEffect::TintColor = 0xB8
+ColorGradingEffect::Enabled = 0xB0
+ColorGradingEffect::TonemapperPreset = 0xB8
+DataModel::CreatorId = 0x178
+DataModel::GameId = 0x180
+DataModel::GameLoaded = 0x570
+DataModel::JobId = 0x118
+DataModel::PlaceId = 0x188
+DataModel::PlaceVersion = 0x1A4
+DataModel::PrimitiveCount = 0x3B8
+DataModel::ScriptContext = 0x440
+DataModel::ServerIP = 0x558
+DataModel::ToRenderView1 = 0x1C0
+DataModel::ToRenderView2 = 0x8
+DataModel::ToRenderView3 = 0x28
+DataModel::Workspace = 0x158
+DataModel::Pointer = 0x8B79B58
+DepthOfFieldEffect::Enabled = 0xB0
+DepthOfFieldEffect::FarIntensity = 0xB8
+DepthOfFieldEffect::FocusDistance = 0xBC
+DepthOfFieldEffect::InFocusRadius = 0xC0
+DepthOfFieldEffect::NearIntensity = 0xC4
+DragDetector::ActivatedCursorIcon = 0x1C0
+DragDetector::CursorIcon = 0xC8
+DragDetector::MaxActivationDistance = 0xE8
+DragDetector::MaxDragAngle = 0x2A8
+DragDetector::MaxDragTranslation = 0x26C
+DragDetector::MaxForce = 0x2AC
+DragDetector::MaxTorque = 0x2B0
+DragDetector::MinDragAngle = 0x2B4
+DragDetector::MinDragTranslation = 0x278
+DragDetector::ReferenceInstance = 0x1F0
+DragDetector::Responsiveness = 0x2C0
+FakeDataModel::Pointer = 0x8B79B58
+FakeDataModel::RealDataModel = 0x1D8
+GuiBase2D::AbsolutePosition = 0x10C
+GuiBase2D::AbsoluteRotation = 0xE8
+GuiBase2D::AbsoluteSize = 0x114
+GuiObject::BackgroundColor3 = 0x540
+GuiObject::BackgroundTransparency = 0x54C
+GuiObject::BorderColor3 = 0x54C
+GuiObject::Image = 0x988
+GuiObject::LayoutOrder = 0x580
+GuiObject::Position = 0x510
+GuiObject::RichText = 0xB88
+GuiObject::Rotation = 0xE8
+GuiObject::ScreenGui_Enabled = 0x4C4
+GuiObject::Size = 0x530
+GuiObject::Text = 0xDF8
+GuiObject::TextColor3 = 0xEA8
+GuiObject::Visible = 0x5AD
+GuiObject::ZIndex = 0x5A4
+Humanoid::AutoJumpEnabled = 0x1D4
+Humanoid::AutoRotate = 0x1D5
+Humanoid::AutomaticScalingEnabled = 0x1D6
+Humanoid::BreakJointsOnDeath = 0x1D7
+Humanoid::CameraOffset = 0x128
+Humanoid::DisplayDistanceType = 0x180
+Humanoid::DisplayName = 0xB8
+Humanoid::EvaluateStateMachine = 0x1D8
+Humanoid::FloorMaterial = 0x184
+Humanoid::Health = 0x190
+Humanoid::HealthDisplayDistance = 0x188
+Humanoid::HealthDisplayType = 0x18C
+Humanoid::HipHeight = 0x194
+Humanoid::HumanoidRootPart = 0x478
+Humanoid::HumanoidState = 0x898
+Humanoid::HumanoidStateID = 0x20
+Humanoid::IsWalking = 0x93F
+Humanoid::Jump = 0x1DA
+Humanoid::JumpHeight = 0x1A0
+Humanoid::JumpPower = 0x1A4
+Humanoid::MaxHealth = 0x1A8
+Humanoid::MaxSlopeAngle = 0x1AC
+Humanoid::MoveDirection = 0x140
+Humanoid::MoveToPart = 0x118
+Humanoid::MoveToPoint = 0x164
+Humanoid::NameDisplayDistance = 0x1B0
+Humanoid::NameOcclusion = 0x1B4
+Humanoid::PlatformStand = 0xC5
+Humanoid::PlatformStatePointer = 0x0
+Humanoid::RequiresNeck = 0x1DD
+Humanoid::RigType = 0x1C0
+Humanoid::SeatPart = 0x108
+Humanoid::Sit = 0x1DD
+Humanoid::TargetPoint = 0x14C
+Humanoid::UseJumpPower = 0xC5
+Humanoid::WalkTimer = 0x408
+Humanoid::Walkspeed = 0x1D0
+Humanoid::WalkspeedCheck = 0x3BC
+Instance::ChildrenEnd = 0x8
+Instance::ChildrenStart = 0x78
+Instance::ClassBase = 0x1B0
+Instance::ClassDescriptor = 0x18
+Instance::ClassName = 0x8
+Instance::Name = 0x8
+Instance::NameContainer = 0x70
+Instance::Parent = 0x68
+Instance::This = 0x8
+Lighting::Ambient = 0xD0
+Lighting::Brightness = 0x118
+Lighting::ClockTime = 0xC8
+Lighting::ColorShift_Bottom = 0xE8
+Lighting::ColorShift_Top = 0xDC
+Lighting::EnvironmentDiffuseScale = 0x11C
+Lighting::EnvironmentSpecularScale = 0x120
+Lighting::ExposureCompensation = 0x124
+Lighting::FogColor = 0xF4
+Lighting::FogEnd = 0x12C
+Lighting::FogStart = 0x130
+Lighting::GeographicLatitude = 0x134
+Lighting::GlobalShadows = 0x144
+Lighting::GradientBottom = 0x190
+Lighting::GradientTop = 0x150
+Lighting::LightColor = 0x15C
+Lighting::LightDirection = 0x168
+Lighting::MoonPosition = 0x184
+Lighting::OutdoorAmbient = 0x100
+Lighting::Sky = 0x1C8
+Lighting::Source = 0x174
+Lighting::SunPosition = 0x178
+LocalScript::ByteCode = 0x0
+LocalScript::GUID = 0xD0
+LocalScript::Hash = 0x1A0
+MaterialColors::Asphalt = 0x30
+MaterialColors::Basalt = 0x27
+MaterialColors::Brick = 0xF
+MaterialColors::Cobblestone = 0x33
+MaterialColors::Concrete = 0xC
+MaterialColors::CrackedLava = 0x2D
+MaterialColors::Glacier = 0x1B
+MaterialColors::Grass = 0x6
+MaterialColors::Ground = 0x2A
+MaterialColors::Ice = 0x36
+MaterialColors::LeafyGrass = 0x39
+MaterialColors::Limestone = 0x3F
+MaterialColors::Mud = 0x24
+MaterialColors::Pavement = 0x42
+MaterialColors::Rock = 0x18
+MaterialColors::Salt = 0x3C
+MaterialColors::Sand = 0x12
+MaterialColors::Sandstone = 0x21
+MaterialColors::Slate = 0x9
+MaterialColors::Snow = 0x1E
+MaterialColors::WoodPlanks = 0x15
+MeshContentProvider::AssetID = 0x10
+MeshContentProvider::Cache = 0xF0
+MeshContentProvider::LRUCache = 0x20
+MeshContentProvider::MeshData = 0x40
+MeshContentProvider::ToMeshData = 0x40
+MeshData::FaceEnd = 0x38
+MeshData::FaceStart = 0x30
+MeshData::VertexEnd = 0x8
+MeshData::VertexStart = 0x0
+MeshPart::MeshId = 0x308
+MeshPart::Texture = 0x338
+Misc::Adornee = 0xF0
+Misc::AnimationId = 0xC0
+Misc::StringLength = 0x10
+Misc::Value = 0xB8
+Model::PrimaryPart = 0x258
+Model::Scale = 0x144
+ModuleScript::ByteCode = 0x0
+ModuleScript::GUID = 0xD0
+ModuleScript::Hash = 0x148
+ModuleScript::IsCoreScript = 0x0
+MouseService::InputObject = 0xF0
+MouseService::InputObject2 = 0x100
+MouseService::MousePosition = 0xD4
+MouseService::SensitivityPointer = 0x0
+ParticleEmitter::Acceleration = 0x1E0
+ParticleEmitter::Brightness = 0x21C
+ParticleEmitter::Drag = 0x220
+ParticleEmitter::Lifetime = 0x1F4
+ParticleEmitter::LightEmission = 0x238
+ParticleEmitter::LightInfluence = 0x23C
+ParticleEmitter::Rate = 0x248
+ParticleEmitter::RotSpeed = 0x1FC
+ParticleEmitter::Rotation = 0x204
+ParticleEmitter::Speed = 0x20C
+ParticleEmitter::SpreadAngle = 0x214
+ParticleEmitter::Texture = 0x1C0
+ParticleEmitter::TimeScale = 0x25C
+ParticleEmitter::VelocityInheritance = 0x260
+ParticleEmitter::ZOffset = 0x264
+Player::AccountAge = 0x35C
+Player::CameraMode = 0x370
+Player::DisplayName = 0x138
+Player::HealthDisplayDistance = 0x394
+Player::LocalPlayer = 0x130
+Player::LocaleId = 0x118
+Player::MaxZoomDistance = 0x368
+Player::MinZoomDistance = 0x36C
+Player::ModelInstance = 0x298
+Player::Mouse = 0x11F0
+Player::NameDisplayDistance = 0x3A4
+Player::Team = 0x2D8
+Player::TeamColor = 0x3B0
+Player::UserId = 0x300
+PlayerConfigurer::Pointer = 0x0
+PlayerMouse::Icon = 0xC8
+PlayerMouse::Workspace = 0x150
+Primitive::AssemblyAngularVelocity = 0x104
+Primitive::AssemblyLinearVelocity = 0xF8
+Primitive::Flags = 0x1B6
+Primitive::Material = 0x0
+Primitive::Owner = 0x210
+Primitive::Position = 0xEC
+Primitive::Rotation = 0xC8
+Primitive::Size = 0x1BC
+Primitive::Validate = 0x6
+PrimitiveFlags::Anchored = 0x2
+PrimitiveFlags::CanCollide = 0x8
+PrimitiveFlags::CanQuery = 0x20
+PrimitiveFlags::CanTouch = 0x10
+ProximityPrompt::ActionText = 0xB0
+ProximityPrompt::Enabled = 0x136
+ProximityPrompt::GamepadKeyCode = 0x11C
+ProximityPrompt::HoldDuration = 0x120
+ProximityPrompt::KeyCode = 0x124
+ProximityPrompt::MaxActivationDistance = 0x128
+ProximityPrompt::ObjectText = 0xD0
+ProximityPrompt::RequiresLineOfSight = 0x137
+RenderJob::FakeDataModel = 0x38
+RenderJob::RealDataModel = 0x1D0
+RenderJob::RenderView = 0x1D8
+RenderView::DeviceD3D11 = 0x8
+RenderView::LightingValid = 0x150
+RenderView::SkyValid = 0x28D
+RenderView::VisualEngine = 0x10
+RunService::HeartbeatFPS = 0xF4
+RunService::HeartbeatTask = 0x3B8
+Script::ByteCode = 0x0
+Script::GUID = 0xD0
+Script::Hash = 0x1A0
+ScriptContext::RequireBypass = 0x0
+Seat::Occupant = 0x210
+Sky::MoonAngularSize = 0x244
+Sky::MoonTextureId = 0xC8
+Sky::SkyboxBk = 0xF8
+Sky::SkyboxDn = 0x128
+Sky::SkyboxFt = 0x158
+Sky::SkyboxLf = 0x188
+Sky::SkyboxOrientation = 0x238
+Sky::SkyboxRt = 0x1B8
+Sky::SkyboxUp = 0x1E8
+Sky::StarCount = 0x248
+Sky::SunAngularSize = 0x23C
+Sky::SunTextureId = 0x218
+Sound::IsPlaying = 0x140
+Sound::Looped = 0x13D
+Sound::PlaybackSpeed = 0x11C
+Sound::RollOffMaxDistance = 0x120
+Sound::RollOffMinDistance = 0x124
+Sound::SoundGroup = 0xE8
+Sound::SoundId = 0xC8
+Sound::Volume = 0x130
+SpawnLocation::AllowTeamChangeOnTouch = 0x3D
+SpawnLocation::Enabled = 0x1E9
+SpawnLocation::ForcefieldDuration = 0x1E0
+SpawnLocation::Neutral = 0x1EA
+SpawnLocation::TeamColor = 0x1E4
+SpecialMesh::MeshId = 0xF8
+SpecialMesh::Scale = 0xC4
+StatsItem::Value = 0xC8
+SunRaysEffect::Enabled = 0xB0
+SunRaysEffect::Intensity = 0xB8
+SunRaysEffect::Spread = 0xBC
+SurfaceAppearance::AlphaMode = 0x290
+SurfaceAppearance::Color = 0x278
+SurfaceAppearance::ColorMap = 0xC8
+SurfaceAppearance::EmissiveMaskContent = 0xF8
+SurfaceAppearance::EmissiveStrength = 0x294
+SurfaceAppearance::EmissiveTint = 0x284
+SurfaceAppearance::MetalnessMap = 0x128
+SurfaceAppearance::NormalMap = 0x158
+SurfaceAppearance::RoughnessMap = 0x188
+TaskScheduler::JobEnd = 0xD0
+TaskScheduler::JobName = 0x18
+TaskScheduler::JobStart = 0xC8
+TaskScheduler::MaxFPS = 0xB0
+TaskScheduler::Pointer = 0x88B64C8
+Team::BrickColor = 0xB8
+Terrain::GrassLength = 0x1E8
+Terrain::MaterialColors = 0x490
+Terrain::WaterColor = 0x1D8
+Terrain::WaterReflectance = 0x1F0
+Terrain::WaterTransparency = 0x1F4
+Terrain::WaterWaveSize = 0x1F8
+Terrain::WaterWaveSpeed = 0x1FC
+Textures::Decal_Texture = 0x180
+Textures::Texture_Texture = 0x180
+Tool::CanBeDropped = 0x4B8
+Tool::Enabled = 0x4B9
+Tool::Grip = 0x4AC
+Tool::ManualActivationOnly = 0x4BA
+Tool::RequiresHandle = 0x4BB
+Tool::TextureId = 0x360
+Tool::Tooltip = 0x468
+UnionOperation::AssetId = 0x308
+UserInputService::WindowInputState = 0x2C0
+VehicleSeat::MaxSpeed = 0x228
+VehicleSeat::SteerFloat = 0x22C
+VehicleSeat::ThrottleFloat = 0x230
+VehicleSeat::Torque = 0x234
+VehicleSeat::TurnSpeed = 0x238
+VisualEngine::Dimensions = 0xAE0
+VisualEngine::FakeDataModel = 0xAC0
+VisualEngine::Pointer = 0x8136228
+VisualEngine::RenderView = 0xC00
+VisualEngine::ViewMatrix = 0x180
+Weld::Part0 = 0x118
+Weld::Part1 = 0x128
+WeldConstraint::Part0 = 0xB8
+WeldConstraint::Part1 = 0xC8
+WindowInputState::CapsLock = 0x40
+WindowInputState::CurrentTextBox = 0x48
+Workspace::CurrentCamera = 0x498
+Workspace::DistributedGameTime = 0x4B8
+Workspace::ReadOnlyGravity = 0x9C0
+Workspace::World = 0x3F0
+World::AirProperties = 0x220
+World::FallenPartsDestroyHeight = 0x208
+World::Gravity = 0x210
+World::Primitives = 0x290
+World::worldStepsPerSec = 0x708
+WorldRoot::RaycastBoundDesc = 0x82012A0
+WorldRoot::RaycastBoundFn = 0x80
+FastClusterEntity::VTableRva = 0x68CB818
+FastClusterEntity::ContextPtr = 0x8
+FastClusterEntity::RenderQueueId = 0x10
+FastClusterEntity::AlphaByte = 0x14
+FastClusterEntity::MaterialPtr = 0x20
+FastClusterEntity::DecalMaterialPtr = 0x48
+FastClusterEntity::TechniqueArrayPtr = 0x70
+FastClusterEntity::PrimitiveIndexArrayPtr = 0x80
+FastClusterEntity::BBoxMinX = 0x98
+FastClusterEntity::BBoxMinY = 0x9C
+FastClusterEntity::BBoxMinZ = 0xA0
+FastClusterEntity::BBoxMaxX = 0xA4
+FastClusterEntity::BBoxMaxY = 0xA8
+FastClusterEntity::BBoxMaxZ = 0xAC
+TechniqueArray::BeginOffset = 0x0
+TechniqueArray::EndOffset = 0x8
+TechniqueArray::EntryStride = 0x88
+MaterialLayer::Stride = 0x88
+MaterialLayer::FillModeByte = 0x11
+MaterialLayer::MatFlags = 0x18
+MaterialLayer::Param = 0x1C
+MaterialLayer::Flags2 = 0x20
+MaterialLayer::ColorData = 0x24
