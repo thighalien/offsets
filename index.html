@@ -4,219 +4,235 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="dark">
-  <meta name="description" content="Roblox external offsets reference">
-  <title>Roblox External Offsets</title>
+  <meta name="description" content="RXCHIE Roblox external offsets reference">
+  <title>RXCHIE // Offsets</title>
   <style>
     :root {
-      --bg: #0d1117;
-      --surface: #111820;
-      --surface-2: #18212b;
-      --border: #293542;
-      --text: #d9e2ea;
-      --muted: #8b98a5;
-      --faint: #657482;
-      --accent: #8fb8d8;
-      --value: #d3a46c;
-      --string: #82c7b1;
+      --bg: #0b0e11;
+      --panel: #11161b;
+      --panel-2: #161d23;
+      --panel-3: #1b242b;
+      --line: #2a353d;
+      --line-soft: #202a31;
+      --text: #d8e0e5;
+      --muted: #89959d;
+      --quiet: #5d6a72;
+      --blue: #a9c2d1;
+      --blue-bright: #d4e4ec;
+      --amber: #c99c61;
+      --green: #80b6a1;
+      --red: #c8786f;
       --mono: ui-monospace, "Cascadia Code", Consolas, "SFMono-Regular", monospace;
       --sans: system-ui, -apple-system, "Segoe UI", sans-serif;
     }
 
     * { box-sizing: border-box; }
     html { background: var(--bg); }
-    body { height: 100vh; min-height: 0; margin: 0; overflow: hidden; color: var(--text); background: var(--bg); font: 13px/1.45 var(--sans); }
-    button, input { font: inherit; }
+    body { height: 100vh; min-width: 320px; min-height: 0; margin: 0; overflow: hidden; color: var(--text); background: var(--bg); font: 13px/1.45 var(--sans); }
+    button, input, select { font: inherit; }
     button { cursor: pointer; }
-    a { color: var(--accent); }
+    a { color: var(--blue); }
 
-    .wrap { width: min(1600px, calc(100% - 56px)); margin: 0 auto; }
-    body > .wrap { height: calc(100vh - 59px); min-height: 0; display: flex; flex-direction: column; }
-    header { border-bottom: 1px solid var(--border); background: var(--surface); }
-    .header-row { display: flex; align-items: center; gap: 15px; min-height: 58px; }
-    h1 { margin: 0; color: var(--text); font: 600 16px var(--mono); letter-spacing: .01em; }
-    h1 span { color: var(--accent); font-weight: 400; }
-    .header-meta { display: flex; gap: 16px; margin-left: auto; color: var(--muted); font: 11px var(--mono); }
-    .header-meta b { color: var(--text); font-weight: 400; }
-    .theme-toggle { padding: 4px 7px; border: 1px solid var(--border); border-radius: 2px; color: var(--muted); background: transparent; font: 10px var(--mono); }
-    .theme-toggle:hover, .theme-toggle:focus-visible { border-color: var(--accent); color: var(--text); }
+    .topbar { height: 58px; border-bottom: 1px solid var(--line); background: #0e1317; }
+    .topbar-inner { display: flex; align-items: center; gap: 28px; width: min(1680px, calc(100% - 48px)); height: 100%; margin: 0 auto; }
+    .brand { display: flex; align-items: baseline; min-width: 205px; }
+    .brand-name { display: flex; align-items: baseline; gap: 10px; color: var(--blue-bright); font: 600 16px/1 var(--mono); letter-spacing: .035em; }
+    .brand-name span { color: var(--quiet); font-size: 11px; font-weight: 400; letter-spacing: .14em; }
+    .top-status { display: flex; align-items: center; gap: 7px; padding-left: 16px; border-left: 1px solid var(--line); color: var(--green); font: 9px var(--mono); letter-spacing: .12em; text-transform: uppercase; }
+    .status-led { width: 5px; height: 5px; border-radius: 50%; background: currentColor; }
+    .top-meta { display: flex; align-items: stretch; gap: 0; margin-left: auto; color: var(--quiet); font: 10px var(--mono); }
+    .top-stat { display: grid; gap: 3px; min-width: 92px; padding: 2px 14px; border-left: 1px solid var(--line-soft); }
+    .top-stat:first-child { min-width: 100px; }
+    .top-stat span { color: var(--quiet); font-size: 9px; letter-spacing: .08em; text-transform: uppercase; white-space: nowrap; }
+    .top-stat b { overflow: hidden; color: var(--muted); font-weight: 400; text-overflow: ellipsis; white-space: nowrap; }
+    .theme-toggle { display: grid; width: 30px; height: 28px; place-items: center; padding: 0; border: 1px solid var(--line); border-radius: 2px; color: var(--muted); background: transparent; font: 17px/1 var(--sans); }
+    .theme-toggle:hover, .theme-toggle:focus-visible { border-color: var(--blue); color: var(--text); }
+    .theme-icon { display: block; transform: translateY(-1px); }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
 
-    .intro { display: flex; flex: 0 0 auto; align-items: baseline; gap: 16px; padding: 42px 0 24px; border-bottom: 1px solid var(--border); }
-    .intro h2 { margin: 0; color: #edf3f7; font: 500 25px var(--mono); letter-spacing: -.02em; }
-    .intro p { margin: 0; color: var(--muted); font-size: 12px; }
-    .source { margin-left: auto; color: var(--faint); font: 10px var(--mono); }
+    .page { display: grid; grid-template-rows: minmax(0, 1fr) 32px; width: min(1680px, calc(100% - 48px)); height: calc(100vh - 58px); margin: 0 auto; }
+    .shell { display: grid; grid-template-columns: 312px minmax(0, 1fr); gap: 20px; min-height: 0; padding: 20px 0 14px; }
 
-    .toolbar { display: flex; align-items: center; gap: 8px; padding: 14px 0; }
-    .search-wrap { flex: 1; }
-    input[type="search"] { width: 100%; padding: 8px 10px; border: 1px solid var(--border); border-radius: 2px; outline: 0; color: var(--text); background: var(--surface); font: 12px var(--mono); }
-    input[type="search"]::placeholder { color: var(--faint); }
-    input[type="search"]:focus { border-color: var(--accent); }
-    .toolbar button, .file-select select { padding: 8px 9px; border: 1px solid var(--border); border-radius: 2px; color: var(--muted); background: var(--surface); font: 10px var(--mono); }
-    .toolbar button:hover, .toolbar button:focus-visible, .file-select select:focus { border-color: var(--accent); color: var(--text); }
-    .file-select { display: flex; align-items: center; gap: 6px; color: var(--faint); font: 10px var(--mono); text-transform: uppercase; }
-    .file-select select { outline: 0; color: var(--text); background: var(--surface-2); }
-    #status { min-width: 80px; color: var(--muted); font: 10px var(--mono); text-align: right; }
+    .archive-panel { display: flex; flex-direction: column; min-width: 0; min-height: 0; border: 1px solid var(--line); background: var(--panel); }
+    .panel-heading { display: flex; align-items: start; justify-content: space-between; gap: 12px; padding: 17px 16px 14px; border-bottom: 1px solid var(--line); }
+    .section-kicker { margin-bottom: 6px; color: var(--quiet); font: 9px var(--mono); letter-spacing: .14em; text-transform: uppercase; }
+    .section-kicker span { color: var(--amber); }
+    .panel-heading h2 { margin: 0; color: var(--blue-bright); font: 500 15px var(--mono); }
+    .archive-count { color: var(--quiet); font: 10px var(--mono); white-space: nowrap; }
+    .archive-search { width: 100%; padding: 10px 12px; border: 0; border-bottom: 1px solid var(--line); outline: 0; color: var(--text); background: var(--panel-2); font: 11px var(--mono); }
+    .archive-search::placeholder { color: var(--quiet); }
+    .archive-search:focus { background: var(--panel-3); }
+    .archive-list { flex: 1 1 auto; min-height: 100px; overflow-y: auto; scrollbar-color: var(--line) transparent; }
+    .archive-entry { position: relative; display: flex; align-items: center; justify-content: space-between; gap: 12px; width: 100%; padding: 13px 14px 13px 17px; border: 0; border-bottom: 1px solid var(--line-soft); color: var(--muted); background: transparent; text-align: left; }
+    .archive-entry::before { position: absolute; top: 0; bottom: 0; left: 0; width: 2px; content: ""; background: transparent; }
+    .archive-entry:hover { color: var(--text); background: var(--panel-2); }
+    .archive-entry.active { color: var(--text); background: var(--panel-2); }
+    .archive-entry.active::before { background: var(--amber); }
+    .archive-version { overflow: hidden; color: inherit; font: 11px var(--mono); text-overflow: ellipsis; white-space: nowrap; }
+    .archive-entry.active .archive-version { color: var(--blue-bright); }
+    .archive-tag { flex: 0 0 auto; color: var(--quiet); font: 9px var(--mono); text-transform: uppercase; }
+    .archive-entry.active .archive-tag { color: var(--amber); }
+    .archive-empty { padding: 18px 14px; color: var(--quiet); font: 10px var(--mono); }
 
-    .list-label { display: flex; justify-content: space-between; padding: 8px 10px; border: 1px solid var(--border); color: var(--muted); background: var(--surface); font: 10px var(--mono); text-transform: uppercase; }
-    .list-label span:last-child { color: var(--faint); }
-    .view-mode { display: flex; gap: 0; }
-    .view-mode button { padding: 8px 9px; border: 1px solid var(--border); color: var(--muted); background: var(--surface); font: 10px var(--mono); }
-    .view-mode button + button { border-left: 0; }
-    .view-mode button:first-child { border-radius: 2px 0 0 2px; }
-    .view-mode button:last-child { border-radius: 0 2px 2px 0; }
-    .view-mode button:hover, .view-mode button:focus-visible, .view-mode button.active { border-color: var(--accent); color: var(--text); background: var(--surface-2); }
-    .source-panel { min-height: 100%; margin: 10px 0 45px; padding: 18px 20px; overflow: auto; border: 1px solid var(--border); color: var(--text); background: var(--surface); font: 12px/1.55 var(--mono); tab-size: 4; white-space: pre; }
+    .archive-detail { flex: 0 0 auto; padding: 15px 16px 16px; border-top: 1px solid var(--line); background: #0f1418; }
+    .detail-label { margin-bottom: 7px; color: var(--quiet); font: 9px var(--mono); letter-spacing: .12em; text-transform: uppercase; }
+    .archive-detail h3 { margin: 0 0 13px; overflow-wrap: anywhere; color: var(--blue); font: 600 12px var(--mono); }
+    .archive-files { display: flex; gap: 4px; margin-bottom: 15px; }
+    .archive-file { padding: 6px 8px; border: 1px solid var(--line); border-radius: 2px; color: var(--muted); background: transparent; font: 9px var(--mono); letter-spacing: .08em; text-transform: uppercase; }
+    .archive-file:hover, .archive-file:focus-visible, .archive-file.active { border-color: var(--blue); color: var(--blue-bright); background: var(--panel-2); }
+    .detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 14px; }
+    .detail-item span { display: block; margin-bottom: 3px; color: var(--quiet); font: 9px var(--mono); letter-spacing: .08em; text-transform: uppercase; }
+    .detail-item b { display: block; overflow-wrap: anywhere; color: var(--muted); font: 10px var(--mono); font-weight: 400; }
+
+    .viewer { display: flex; flex-direction: column; min-width: 0; min-height: 0; }
+    .viewer-heading { display: flex; align-items: end; justify-content: space-between; gap: 20px; min-height: 83px; padding: 0 0 17px; border-bottom: 1px solid var(--line); }
+    .viewer-heading h1 { margin: 0; color: var(--blue-bright); font: 500 27px var(--mono); letter-spacing: -.04em; }
+    .viewer-heading p { margin: 6px 0 0; color: var(--muted); font-size: 12px; }
+    .build-readout { display: grid; grid-template-columns: minmax(0, 1fr) 132px; min-width: 360px; border-left: 1px solid var(--line); }
+    .readout-cell { min-width: 0; padding: 5px 0 5px 14px; }
+    .readout-cell + .readout-cell { border-left: 1px solid var(--line-soft); }
+    .readout-label { display: block; margin-bottom: 7px; color: var(--quiet); font: 9px var(--mono); letter-spacing: .1em; text-transform: uppercase; }
+    .readout-value { display: block; overflow: hidden; color: var(--muted); font: 10px var(--mono); text-overflow: ellipsis; white-space: nowrap; }
+    .build-readout strong { display: block; overflow: hidden; color: var(--amber); font: 11px var(--mono); text-overflow: ellipsis; white-space: nowrap; }
+
+    .toolbar { display: flex; align-items: center; gap: 8px; padding: 12px 0; border-bottom: 1px solid var(--line-soft); }
+    .toolbar-label { flex: 0 0 auto; color: var(--quiet); font: 9px var(--mono); letter-spacing: .12em; text-transform: uppercase; }
+    .file-select { display: flex; align-items: center; gap: 5px; color: var(--quiet); font: 9px var(--mono); letter-spacing: .08em; text-transform: uppercase; }
+    .file-select select { padding: 8px 9px; border: 1px solid var(--line); border-radius: 2px; outline: 0; color: var(--text); background: var(--panel-2); font: 10px var(--mono); }
+    .file-select select:focus { border-color: var(--blue); }
+    .source-status { margin-left: auto; color: var(--quiet); font: 9px var(--mono); }
+
+    .viewer-stage { flex: 1 1 auto; min-height: 0; overflow-y: auto; scrollbar-color: var(--line) transparent; }
+    .source-panel { min-height: 100%; margin: 10px 0 30px; padding: 17px 19px; overflow: auto; border: 1px solid var(--line); outline: 0; color: #c7d2d9; background: var(--panel); font: 11px/1.65 var(--mono); tab-size: 4; white-space: pre; user-select: text; cursor: text; }
+    .source-panel:focus { border-color: var(--blue); }
     .source-panel code { font: inherit; }
-    #content { padding: 10px 0 45px; }
-    .ns-card { margin-bottom: 7px; border: 1px solid var(--border); background: var(--surface); }
-    .ns-head { display: flex; align-items: center; gap: 9px; width: 100%; padding: 9px 10px; border: 0; color: var(--text); background: var(--surface); text-align: left; }
-    .ns-head:hover, .ns-head:focus-visible { background: var(--surface-2); }
-    .caret { width: 10px; color: var(--accent); font: 11px var(--mono); transition: transform .12s ease; }
-    .ns-card.collapsed .caret { transform: rotate(-90deg); }
-    .ns-head code { color: var(--accent); font: 600 12px var(--mono); }
-    .ns-head .count { margin-left: auto; color: var(--faint); font: 10px var(--mono); }
-    table { width: 100%; border-collapse: collapse; font: 12px var(--mono); }
-    tbody { display: none; }
-    .ns-card:not(.collapsed) tbody { display: table-row-group; }
-    th { padding: 6px 10px; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); color: var(--faint); background: var(--surface-2); font-size: 10px; font-weight: 400; text-align: left; }
-    td { padding: 7px 10px; border-bottom: 1px solid rgba(42,51,61,.65); }
-    tbody tr:hover td { background: rgba(143,184,216,.045); }
-    tr:last-child td { border-bottom: 0; }
-    td.name { width: 44%; color: var(--text); }
-    td.hex { color: var(--value); }
-    td.dec { color: var(--muted); }
-    td.str { color: var(--string); }
-    .copy { padding: 2px 6px; border: 1px solid var(--border); border-radius: 2px; color: var(--faint); background: transparent; font: 10px var(--mono); }
-    .copy:hover, .copy:focus-visible { border-color: var(--accent); color: var(--accent); }
-    .copy.copied { border-color: var(--string); color: var(--string); }
-    #empty { padding: 35px 0; color: var(--muted); font: 12px var(--mono); text-align: center; }
+    .tok-comment { color: #65737b; }
+    .tok-keyword { color: #a8bfd0; }
+    .tok-type { color: #c5a779; }
+    .tok-string { color: #86bca7; }
+    .tok-number { color: #d3a36a; }
+    .tok-key { color: #b4cde0; }
+    .tok-section { color: #d0a56e; }
+    .tok-punctuation { color: #829099; }
+    body[data-theme="light"] .tok-comment { color: #87949b; }
+    body[data-theme="light"] .tok-keyword { color: #245f88; }
+    body[data-theme="light"] .tok-type { color: #8d5c20; }
+    body[data-theme="light"] .tok-string { color: #187561; }
+    body[data-theme="light"] .tok-number { color: #9b5b20; }
+    body[data-theme="light"] .tok-key { color: #236b9e; }
+    body[data-theme="light"] .tok-section { color: #8d5c20; }
+    body[data-theme="light"] .tok-punctuation { color: #697982; }
 
-    .workspace { display: grid; flex: 1 1 auto; grid-template-columns: 290px minmax(0, 1fr); gap: 28px; align-items: stretch; min-height: 0; padding-top: 22px; overflow: hidden; }
-    main { min-width: 0; min-height: 0; overflow-y: auto; overscroll-behavior: contain; scrollbar-color: var(--border) transparent; }
-    .archive { align-self: stretch; min-height: 0; margin: 0; overflow-y: auto; overscroll-behavior: contain; border: 1px solid var(--border); background: var(--surface); scrollbar-color: var(--border) transparent; }
-    .archive-head { display: block; padding: 18px 16px 15px; border-bottom: 1px solid var(--border); }
-    .archive-head h2 { margin: 0; color: var(--text); font: 500 16px var(--mono); }
-    .archive-head p { margin: 6px 0 0; color: var(--muted); font-size: 11px; }
-    .archive-count { display: block; margin-top: 10px; color: var(--faint); font: 10px var(--mono); }
-    .archive-layout { display: block; min-height: 185px; background: var(--surface); }
-    .archive-list { border-right: 0; }
-    .archive-search { width: 100%; padding: 10px 12px; border: 0; border-bottom: 1px solid var(--border); outline: 0; color: var(--text); background: var(--surface-2); font: 11px var(--mono); }
-    .archive-search::placeholder { color: var(--faint); }
-    .archive-entry { display: flex; align-items: center; justify-content: space-between; gap: 10px; width: 100%; padding: 12px 14px; border: 0; border-bottom: 1px solid rgba(42,51,61,.65); color: var(--muted); background: transparent; text-align: left; }
-    .archive-entry:hover, .archive-entry.active { color: var(--text); background: var(--surface-2); }
-    .archive-entry.active { box-shadow: inset 2px 0 var(--accent); }
-    .archive-version { display: block; overflow: hidden; color: inherit; font: 11px var(--mono); text-overflow: ellipsis; white-space: nowrap; }
-    .archive-entry.active .archive-version { color: var(--accent); }
-    .archive-tag { flex: 0 0 auto; color: var(--faint); font: 9px var(--mono); text-transform: uppercase; }
-    .archive-detail { padding: 18px 16px; border-top: 1px solid var(--border); }
-    .archive-detail .detail-label { margin-bottom: 8px; color: var(--faint); font: 10px var(--mono); text-transform: uppercase; }
-    .archive-detail h3 { margin: 0 0 15px; color: var(--accent); font: 600 14px var(--mono); overflow-wrap: anywhere; }
-    .detail-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px 25px; }
-    .detail-item span { display: block; margin-bottom: 3px; color: var(--faint); font: 10px var(--mono); text-transform: uppercase; }
-    .detail-item b { color: var(--text); font: 11px var(--mono); font-weight: 400; overflow-wrap: anywhere; }
-    .archive-empty { padding: 16px 10px; color: var(--faint); font: 10px var(--mono); }
-    footer { display: flex; flex: 0 0 auto; justify-content: space-between; gap: 12px; padding: 14px 0 25px; border-top: 1px solid var(--border); color: var(--faint); font: 10px var(--mono); }
+    .page-footer { display: flex; align-items: center; justify-content: space-between; gap: 12px; border-top: 1px solid var(--line); color: var(--quiet); font: 9px var(--mono); }
+    .page-footer b { color: var(--muted); font-weight: 400; }
+    .page-footer strong { color: var(--muted); font-weight: 600; }
 
-    body[data-theme="light"] {      --bg: #f4f6f8; --surface: #fff; --surface-2: #e8edf1; --border: #cbd4dc; --text: #1e2a34; --muted: #5b6d7b; --faint: #8797a3; --accent: #236da4; --value: #9b5b20; --string: #187561; }
-    body[data-theme="light"] header { background: var(--surface); }
+    body[data-theme="light"] { --bg: #eef1f3; --panel: #fff; --panel-2: #e7ecef; --panel-3: #dbe3e8; --line: #c4cfd6; --line-soft: #dce3e7; --text: #1e2a32; --muted: #5c6d78; --quiet: #82919a; --blue: #236b9e; --blue-bright: #174e74; --amber: #9b5b20; --green: #187561; --red: #a84f48; }
+    body[data-theme="light"] .topbar { background: #f7f9fa; }
+    body[data-theme="light"] .archive-detail { background: #f7f9fa; }
 
-    @media (max-width: 650px) {
+    @media (max-width: 900px) {
+      .top-meta { gap: 10px; }
+      .top-meta span:nth-child(-n+2) { display: none; }
+      .shell { grid-template-columns: 260px minmax(0, 1fr); gap: 14px; }
+      .build-readout { min-width: 280px; }
+    }
+
+    @media (max-width: 680px) {
       body { height: auto; min-height: 100vh; overflow: auto; }
-      .wrap { width: min(100% - 24px, 720px); }
-      body > .wrap { height: auto; display: block; }
-      .header-meta { display: none; }
-      .intro { display: block; }
-      .intro p { margin-top: 7px; }
-      .source { display: block; margin: 7px 0 0; }
+      .topbar { height: 56px; }
+      .topbar-inner, .page { width: calc(100% - 24px); }
+      .topbar-inner { gap: 12px; }
+      .brand { min-width: 0; }
+      .top-status, .top-meta { display: none; }
+      .page { display: block; height: auto; }
+      .shell { display: block; padding: 14px 0 0; }
+      .archive-panel { min-height: 0; margin-bottom: 18px; }
+      .archive-list { max-height: 28vh; }
+      .viewer-heading { display: block; min-height: 0; padding-bottom: 14px; }
+      .build-readout { min-width: 0; margin-top: 15px; }
       .toolbar { flex-wrap: wrap; }
-      .workspace { display: block; min-height: 0; padding-top: 22px; overflow: visible; }
-      .archive { max-height: 42vh; min-height: 0; margin-bottom: 24px; overflow-y: auto; }
-      main { overflow: visible; }
-      .archive-list { border-right: 0; border-bottom: 1px solid var(--border); }
-      .search-wrap { flex-basis: 100%; }
-      #status { margin-left: auto; }
-      th, td { padding-right: 7px; padding-left: 7px; }
-      td.name { width: 37%; overflow-wrap: anywhere; }
-      footer { display: block; }
-      footer span { display: block; margin-bottom: 5px; }
+      .source-status { margin-left: auto; }
+      .page-footer { min-height: 40px; padding: 10px 0; }
+      .page-footer span:last-child { display: none; }
     }
   </style>
 </head>
 <body>
-  <header>
-    <div class="wrap header-row">
-      <h1>RXCHIE Offsets</h1>
-      <div class="header-meta">
-        <span>dumped with <b>RXDump</b></span>
-        <span>roblox version <b id="robloxVersion">—</b></span>
-        <span>dumped at <b id="statTime">—</b></span>
-        <span>total offsets <b id="statOffsets">—</b></span>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand" aria-label="RXCHIE offsets">
+        <div class="brand-name">RXCHIE <span>OFFSETS</span></div>
       </div>
-      <button class="theme-toggle" type="button" id="themeToggle" aria-pressed="false">light mode</button>
+      <div class="top-meta" aria-label="Current dump metadata">
+        <div class="top-stat"><span>dumped with</span><b>RXDump</b></div>
+        <div class="top-stat"><span>build</span><b id="topVersion">not detected</b></div>
+        <div class="top-stat"><span>entries</span><b id="topCount">not counted</b></div>
+      </div>
+      <div class="top-status"><span class="status-led"></span>online</div>
+      <button class="theme-toggle" type="button" id="themeToggle" aria-label="Switch to light mode" aria-pressed="false" title="Switch to light mode"><span class="theme-icon" aria-hidden="true">☼</span><span class="sr-only">Switch to light mode</span></button>
     </div>
   </header>
 
-  <div class="wrap">
-    <section class="intro">
-      <h2>Offsets</h2>
-      <p>External offsets for Roblox. Select a source file to inspect its current values.</p>
-      <span class="source" id="robloxVersionMobile">loading</span>
-    </section>
-
-    <div class="workspace">
-    <section class="archive" id="archive" aria-labelledby="archiveTitle">
-      <div class="archive-head">
-        <div>
-          <h2 id="archiveTitle">Version archive</h2>
-          <p>Available snapshots for this offsets set.</p>
+  <div class="page">
+    <div class="shell">
+      <aside class="archive-panel" aria-labelledby="archiveTitle">
+        <div class="panel-heading">
+          <div>
+            <div class="section-kicker">BUILD ARCHIVE</div>
+            <h2 id="archiveTitle">Version archive</h2>
+          </div>
+          <span class="archive-count" id="archiveCount">0 versions</span>
         </div>
-        <span class="archive-count" id="archiveCount">0 versions</span>
-      </div>
-      <div class="archive-layout">
-        <div class="archive-list">
-          <input class="archive-search" type="search" id="archiveSearch" placeholder="filter versions..." autocomplete="off" aria-label="Filter archived versions">
-          <div id="archiveEntries"></div>
-        </div>
+        <input class="archive-search" type="search" id="archiveSearch" placeholder="filter versions..." autocomplete="off" aria-label="Filter archived versions">
+        <div class="archive-list" id="archiveEntries"></div>
         <div class="archive-detail" id="archiveDetail">
           <div class="detail-label">selected snapshot</div>
           <h3>—</h3>
           <div class="detail-grid"></div>
         </div>
-      </div>
-    </section>
+      </aside>
 
-    <main id="offsets">
-      <div class="toolbar" role="search">
-        <div class="search-wrap">
-          <input type="search" id="search" placeholder="search namespaces, members, values..." autocomplete="off" aria-label="Search offsets">
+      <main class="viewer" id="offsets">
+        <div class="viewer-heading">
+          <div>
+            <div class="section-kicker">OFFSET REGISTRY <span>/</span> LIVE FILES</div>
+            <h1>Offset files</h1>
+            <p>Select a build, then open its original HPP, JSON, or TXT source.</p>
+          </div>
+          <div class="build-readout" aria-label="Active build metadata">
+            <div class="readout-cell">
+              <span class="readout-label">active build</span>
+              <strong id="robloxVersion">not detected</strong>
+            </div>
+            <div class="readout-cell">
+              <span class="readout-label">dumped</span>
+              <b class="readout-value" id="statTime">not recorded</b>
+            </div>
+          </div>
         </div>
-        <label class="file-select">file
-          <select id="fileType" aria-label="Offset file type">
-            <option value="json">Offsets.json</option>
-            <option value="hpp">Offsets.hpp</option>
-            <option value="txt">Offsets.txt</option>
-          </select>
-        </label>
-        <div class="view-mode" role="group" aria-label="Display mode">
-          <button type="button" id="sourceMode" class="active" aria-pressed="true">source</button>
-          <button type="button" id="tableMode" aria-pressed="false">table</button>
-        </div>
-        <button type="button" id="expandAll">expand</button>
-        <button type="button" id="collapseAll">collapse</button>
-        <span id="status" aria-live="polite"></span>
-      </div>
-      <div id="tableViewPanel" hidden>
-        <div class="list-label"><span>Namespace / member</span><span>Hex / decimal</span></div>
-        <div id="content"></div>
-        <p id="empty" hidden>no offsets match the search.</p>
-      </div>
-      <pre class="source-panel" id="sourcePanel" aria-label="Complete selected offset file"><code id="sourceCode"></code></pre>
-    </main>
 
+        <div class="toolbar" role="group" aria-label="Source file controls">
+          <span class="toolbar-label">source file</span>
+          <label class="file-select">file
+            <select id="fileType" aria-label="Offset file type">
+              <option value="hpp">Offsets.hpp</option>
+              <option value="json">Offsets.json</option>
+              <option value="txt">Offsets.txt</option>
+            </select>
+          </label>
+          <span class="source-status" id="status" aria-live="polite">source ready</span>
+        </div>
+
+        <div class="viewer-stage">
+          <pre class="source-panel" id="sourcePanel" tabindex="0" aria-label="Complete selected offset file"><code id="sourceCode"></code></pre>
+        </div>
+      </main>
     </div>
 
-    <footer>
-      <span>source <b id="statSource">—</b></span>
-      <span>Generated by <strong>RXCHIE</strong> · offsets by <a href="https://offsets.imtheo.lol/" target="_blank" rel="noopener">theo</a></span>
+    <footer class="page-footer">
+      <span>source <b id="statSource">—</b> · <b id="statOffsets">—</b> offsets</span>
+      <span><strong>RXCHIE</strong> · offsets by <a href="https://offsets.imtheo.lol/" target="_blank" rel="noopener">theo</a></span>
     </footer>
   </div>
 
@@ -224,23 +240,33 @@
     "use strict";
 
     const $ = (id) => document.getElementById(id);
-    const state = { offsets: {}, nsOrder: [], source: "—", rawText: "", view: "source", archive: [], archiveLoaded: false, selectedArchive: "" };
+    const state = {
+      offsets: {},
+      nsOrder: [],
+      source: "—",
+      rawText: "",
+      archive: [],
+      archiveLoaded: false,
+      selectedArchive: "",
+      sourceVersion: "",
+      sourceIsCurrent: true
+    };
 
     async function loadArchiveIndex() {
       try {
-        const res = await fetch("archive/versions.json", { cache: "no-store" });
-        if (!res.ok) throw new Error(res.status);
-        const data = await res.json();
+        const response = await fetch("archive/versions.json", { cache: "no-store" });
+        if (!response.ok) throw new Error(response.status);
+        const data = await response.json();
         return Array.isArray(data) ? data : data.versions || [];
       } catch (_) {
         return [];
       }
     }
 
-    async function loadFile(fileType) {
-      const res = await fetch(`Offsets.${fileType}`, { cache: "no-store" });
-      if (!res.ok) throw new Error(res.status);
-      const text = await res.text();
+    async function loadFile(fileType, path = `Offsets.${fileType}`) {
+      const response = await fetch(path, { cache: "no-store" });
+      if (!response.ok) throw new Error(response.status);
+      const text = await response.text();
       if (fileType === "json") {
         const data = JSON.parse(text);
         return { data, rawText: JSON.stringify(data, null, 2) + "\n" };
@@ -290,186 +316,227 @@
       return { offsets, meta: {} };
     }
 
-    function renderSource() {
-      $("sourceCode").textContent = state.rawText || "Unable to load the selected source file.";
-    }
-
-    function setView(view) {
-      state.view = view;
-      const source = view === "source";
-      $("sourcePanel").hidden = !source;
-      $("tableViewPanel").hidden = source;
-      $("sourceMode").classList.toggle("active", source);
-      $("tableMode").classList.toggle("active", !source);
-      $("sourceMode").setAttribute("aria-pressed", String(source));
-      $("tableMode").setAttribute("aria-pressed", String(!source));
-      $("search").disabled = source;
-      $("search").placeholder = source ? "source view active" : "search namespaces, members, values...";
-      $("expandAll").hidden = source;
-      $("collapseAll").hidden = source;
-      if (!source) render();
-    }
-
     function archiveVersion(entry) {
       return entry.version || entry.remote_version || entry.local_version || "unknown-version";
     }
 
+    function detectVersion(loaded) {
+      return loaded.data.offsets?.["Offsets::ClientVersion"]
+        || loaded.rawText.match(/version-[0-9a-f]{16}/i)?.[0]
+        || "not detected";
+    }
+
+    function archivePath(entry, fileType) {
+      return entry.files?.[fileType] || `archive/${archiveVersion(entry)}.${fileType}`;
+    }
+
+    function availableArchiveTypes(entry) {
+      return ["hpp", "json", "txt"].filter((type) => entry.files?.[type] || entry.current);
+    }
+
     function updateArchiveCurrent(data, fileType) {
       const version = data.offsets?.["Offsets::ClientVersion"] || "unknown-version";
-      const manifestEntry = state.archive.find((entry) => archiveVersion(entry) === version);
-      const current = {
-        version,
-        fileType,
-        build: manifestEntry?.build || "—",
-        dumpedAt: manifestEntry?.dumpedAt || "—",
-        localVersion: manifestEntry?.localVersion || "—",
-        source: `Offsets.${fileType}`,
-        current: true
-      };
-      const key = current.version;
-      state.archive = [current, ...state.archive.filter((entry) => archiveVersion(entry) !== key)];
-      state.selectedArchive = key;
+      const existing = state.archive.find((entry) => archiveVersion(entry) === version);
+      if (existing) {
+        existing.current = true;
+        existing.fileType = fileType;
+        existing.source = `Offsets.${fileType}`;
+        existing.files = existing.files || {};
+      } else {
+        state.archive.unshift({
+          version,
+          fileType,
+          build: "—",
+          dumpedAt: "—",
+          localVersion: version,
+          source: `Offsets.${fileType}`,
+          files: { [fileType]: `Offsets.${fileType}` },
+          current: true
+        });
+      }
+      for (const entry of state.archive) {
+        if (archiveVersion(entry) !== version) entry.current = false;
+      }
+      state.selectedArchive = version;
+    }
+
+    function esc(value) {
+      return String(value).replace(/[&<>"']/g, (character) => ({
+        "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
+      }[character]));
+    }
+
+    function highlightTokens(text, pattern, classify) {
+      let html = "";
+      let cursor = 0;
+      for (const match of text.matchAll(pattern)) {
+        const token = match[0];
+        const index = match.index;
+        html += esc(text.slice(cursor, index));
+        html += `<span class="${classify(token, index)}">${esc(token)}</span>`;
+        cursor = index + token.length;
+      }
+      return html + esc(text.slice(cursor));
+    }
+
+    function highlightJSON(text) {
+      const pattern = /"(?:\\.|[^"\\])*"|-?\d+(?:\.\d+)?(?:[eE][+-]?\d+)?|true|false|null/g;
+      return highlightTokens(text, pattern, (token, index) => {
+        if (token.startsWith('"')) return /^\\s*:/.test(text.slice(index + token.length)) ? "tok-key" : "tok-string";
+        if (/^(true|false|null)$/.test(token)) return "tok-keyword";
+        return "tok-number";
+      });
+    }
+
+    function highlightHPP(text) {
+      const tokenPattern = /"(?:\\.|[^"\\])*"|0x[0-9a-fA-F]+|\b\d+\b|\b(?:namespace|inline|constexpr|return|const|static|struct|class|public|private)\b|\b(?:uintptr_t|string)\b/g;
+      return text.split(/(\r?\n)/).map((line) => {
+        if (/^\r?\n$/.test(line)) return line;
+        const commentAt = line.indexOf("//");
+        const code = commentAt < 0 ? line : line.slice(0, commentAt);
+        const comment = commentAt < 0 ? "" : line.slice(commentAt);
+        const highlighted = highlightTokens(code, tokenPattern, (token) => {
+          if (token.startsWith('"')) return "tok-string";
+          if (/^0x|^\\d/.test(token)) return "tok-number";
+          if (/^(uintptr_t|string)$/.test(token)) return "tok-type";
+          return "tok-keyword";
+        });
+        return highlighted + (comment ? `<span class="tok-comment">${esc(comment)}</span>` : "");
+      }).join("");
+    }
+
+    function highlightTXT(text) {
+      const valuePattern = /"(?:\\.|[^"\\])*"|0x[0-9a-fA-F]+|\b\d+\b/g;
+      return text.split(/(\r?\n)/).map((line) => {
+        if (/^\r?\n$/.test(line)) return line;
+        const section = line.match(/^(\s*\[[^\]]+\])(\s*)$/);
+        if (section) return `<span class="tok-section">${esc(section[1])}</span>${section[2]}`;
+        const entry = line.match(/^(\s*)([A-Za-z_]\w*)(\s*=)(.*)$/);
+        if (!entry) return highlightTokens(line, valuePattern, (token) => token.startsWith('"') ? "tok-string" : "tok-number");
+        return esc(entry[1]) + `<span class="tok-key">${esc(entry[2])}</span><span class="tok-punctuation">${esc(entry[3])}</span>` + highlightTokens(entry[4], valuePattern, (token) => token.startsWith('"') ? "tok-string" : "tok-number");
+      }).join("");
+    }
+
+    function highlightSource(text, fileType) {
+      if (fileType === "json") return highlightJSON(text);
+      if (fileType === "txt") return highlightTXT(text);
+      return highlightHPP(text);
+    }
+
+    function renderSource() {
+      const text = state.rawText || "Unable to load the selected source file.";
+      $("sourceCode").innerHTML = highlightSource(text, state.fileType);
     }
 
     function renderArchive() {
       const query = ($("archiveSearch").value || "").trim().toLowerCase();
-      const entries = state.archive.filter((entry) => {
-        const label = `${archiveVersion(entry)} ${entry.fileType || "json"}`.toLowerCase();
-        return label.includes(query);
-      });
+      const entries = state.archive.filter((entry) => archiveVersion(entry).toLowerCase().includes(query));
       $("archiveCount").textContent = `${state.archive.length} version${state.archive.length === 1 ? "" : "s"}`;
       const host = $("archiveEntries");
       host.innerHTML = "";
       if (!entries.length) {
-        host.innerHTML = `<div class="archive-empty">no archived versions match.</div>`;
-        return;
-      }
-      for (const entry of entries) {
-        const key = archiveVersion(entry);
-        const button = document.createElement("button");
-        button.type = "button";
-        button.className = `archive-entry${key === state.selectedArchive ? " active" : ""}`;
-        button.innerHTML = `<span class="archive-version">${esc(archiveVersion(entry))}</span><span class="archive-tag">${esc(entry.fileType || "json")}${entry.current ? " · current" : ""}</span>`;
-        button.addEventListener("click", () => {
-          state.selectedArchive = key;
-          renderArchive();
-        });
-        host.appendChild(button);
+        host.innerHTML = `<div class="archive-empty">no versions match.</div>`;
+      } else {
+        for (const entry of entries) {
+          const version = archiveVersion(entry);
+          const button = document.createElement("button");
+          button.type = "button";
+          button.className = `archive-entry${version === state.selectedArchive ? " active" : ""}`;
+          button.innerHTML = `<span class="archive-version">${esc(version)}</span><span class="archive-tag">${entry.current ? "current" : "archived"}</span>`;
+          button.addEventListener("click", () => {
+            const currentType = $("fileType").value;
+            const type = availableArchiveTypes(entry).includes(currentType) ? currentType : "json";
+            loadArchiveSource(entry, type);
+          });
+          host.appendChild(button);
+        }
       }
 
       const selected = state.archive.find((entry) => archiveVersion(entry) === state.selectedArchive) || entries[0];
+      if (!selected) return;
+      const selectedType = $("fileType").value;
+      const files = availableArchiveTypes(selected);
       const detail = $("archiveDetail");
-      detail.innerHTML = `<div class="detail-label">selected snapshot</div><h3>${esc(archiveVersion(selected))}</h3><div class="detail-grid"><div class="detail-item"><span>file</span><b>Offsets.${esc(selected.fileType || "json")}</b></div><div class="detail-item"><span>status</span><b>${selected.current ? "current" : "archived"}</b></div><div class="detail-item"><span>build</span><b>${esc(selected.build || "—")}</b></div><div class="detail-item"><span>dumped</span><b>${esc(selected.dumpedAt || "—")}</b></div></div>`;
+      detail.innerHTML = `<div class="detail-label">selected snapshot</div><h3>${esc(archiveVersion(selected))}</h3><div class="archive-files" role="group" aria-label="Archived file type">${files.map((type) => `<button type="button" class="archive-file${type === selectedType ? " active" : ""}" data-archive-type="${type}">${type}</button>`).join("")}</div><div class="detail-grid"><div class="detail-item"><span>status</span><b>${selected.current ? "current" : "archived"}</b></div><div class="detail-item"><span>build</span><b>${esc(selected.build || "—")}</b></div><div class="detail-item"><span>dumped</span><b>${esc(selected.dumpedAt || "—")}</b></div><div class="detail-item"><span>source</span><b>${esc(archivePath(selected, selectedType))}</b></div></div>`;
+      detail.querySelectorAll("[data-archive-type]").forEach((button) => {
+        button.addEventListener("click", () => loadArchiveSource(selected, button.dataset.archiveType));
+      });
     }
 
-    async function load() {
-      const fileType = $("fileType").value;
-      let data;
-      try {
-        const loaded = await loadFile(fileType);
-        data = loaded.data;
-        state.rawText = loaded.rawText;
-        state.source = `Offsets.${fileType}`;
-      } catch (_) {
-        $("status").textContent = `unable to load Offsets.${fileType}`;
-        return;
-      }
-
-      if (!state.archiveLoaded) {
-        state.archive = await loadArchiveIndex();
-        state.archiveLoaded = true;
-      }
-      state.offsets = data.offsets || {};
+    async function applyLoaded(loaded, fileType, version, sourcePath, isCurrent) {
+      state.rawText = loaded.rawText;
+      state.fileType = fileType;
+      state.source = sourcePath;
+      state.sourceVersion = version;
+      state.sourceIsCurrent = isCurrent;
+      state.offsets = loaded.data.offsets || {};
       const namespaces = new Set();
       for (const key of Object.keys(state.offsets)) {
         if (key.includes("::")) namespaces.add(key.slice(0, key.lastIndexOf("::")));
       }
       state.nsOrder = [...namespaces];
 
-      const version = state.offsets["Offsets::ClientVersion"];
-      const displayedVersion = version || "—";
+      const displayedVersion = version || "not detected";
       $("robloxVersion").textContent = displayedVersion;
-      $("robloxVersionMobile").textContent = displayedVersion;
+      $("topVersion").textContent = displayedVersion;
+      $("statTime").textContent = state.archive.find((entry) => archiveVersion(entry) === version)?.dumpedAt || "not recorded";
+      $("topCount").textContent = Object.keys(state.offsets).length;
       $("statOffsets").textContent = Object.keys(state.offsets).length;
-      updateArchiveCurrent(data, fileType);
-      const currentEntry = state.archive.find((entry) => archiveVersion(entry) === version);
-      $("statTime").textContent = currentEntry?.dumpedAt || "—";
-      $("statSource").textContent = state.source;
-
+      $("statSource").textContent = sourcePath;
+      $("fileType").value = fileType;
       renderSource();
-      render();
+      $("status").textContent = `${fileType.toUpperCase()} loaded`;
       renderArchive();
     }
 
-    $("search").addEventListener("input", render);
-    $("fileType").addEventListener("change", load);
-    $("archiveSearch").addEventListener("input", renderArchive);
-    $("sourceMode").addEventListener("click", () => setView("source"));
-    $("tableMode").addEventListener("click", () => setView("table"));
-
-    const esc = (value) => String(value).replace(/[&<>"']/g, (char) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[char]));
-
-    function rowHTML(ns, name, value) {
-      const isString = typeof value === "string";
-      const renderedValue = isString
-        ? `<td class="str">"${esc(value)}"</td><td class="dec"></td>`
-        : `<td class="hex">0x${value.toString(16).toUpperCase()}</td><td class="dec">${value}</td>`;
-      const copyValue = isString ? value : "0x" + value.toString(16).toUpperCase();
-      return `<tr><td class="name">${esc(name)}</td>${renderedValue}<td><button class="copy" data-ref="${esc(ns)}::${esc(name)}" data-val="${esc(copyValue)}">copy</button></td></tr>`;
-    }
-
-    function render() {
-      const query = ($("search").value || "").trim().toLowerCase();
-      const host = $("content");
-      host.innerHTML = "";
-      let visible = 0;
-
-      for (const ns of state.nsOrder) {
-        const entries = Object.entries(state.offsets)
-          .filter(([key]) => key.includes("::") && key.slice(0, key.lastIndexOf("::")) === ns)
-          .map(([key, value]) => [key.slice(key.lastIndexOf("::") + 2), value]);
-        const namespaceMatches = ns.toLowerCase().includes(query);
-        const rows = entries.filter(([name, value]) => namespaceMatches || name.toLowerCase().includes(query) || String(value).toLowerCase().includes(query));
-        if (!rows.length) continue;
-        visible += rows.length;
-
-        const card = document.createElement("section");
-        card.className = "ns-card";
-        card.innerHTML = `<button class="ns-head" type="button" aria-expanded="true"><span class="caret">▾</span><code>${esc(ns)}</code><span class="count">${rows.length} entries</span></button><table><thead><tr><th>member</th><th>hex</th><th>dec</th><th></th></tr></thead><tbody>${rows.map(([name, value]) => rowHTML(ns, name, value)).join("")}</tbody></table>`;
-        card.querySelector(".ns-head").addEventListener("click", (event) => {
-          const button = event.currentTarget;
-          const collapsed = card.classList.toggle("collapsed");
-          button.setAttribute("aria-expanded", String(!collapsed));
-        });
-        host.appendChild(card);
+    async function loadCurrentSource(fileType = $("fileType").value) {
+      try {
+        const loaded = await loadFile(fileType);
+        const version = detectVersion(loaded);
+        updateArchiveCurrent(loaded.data, fileType);
+        await applyLoaded(loaded, fileType, version, `Offsets.${fileType}`, true);
+      } catch (_) {
+        $("status").textContent = `unable to load Offsets.${fileType}`;
       }
-
-      $("empty").hidden = visible > 0;
-      $("status").textContent = visible ? `${visible} / ${Object.keys(state.offsets).length}` : "no matches";
     }
 
-    function setAllCollapsed(collapsed) {
-      document.querySelectorAll(".ns-card").forEach((card) => {
-        card.classList.toggle("collapsed", collapsed);
-        card.querySelector(".ns-head").setAttribute("aria-expanded", String(!collapsed));
-      });
+    async function loadArchiveSource(entry, fileType) {
+      state.selectedArchive = archiveVersion(entry);
+      const path = archivePath(entry, fileType);
+      try {
+        const loaded = await loadFile(fileType, path);
+        const version = detectVersion(loaded) === "not detected" ? archiveVersion(entry) : detectVersion(loaded);
+        await applyLoaded(loaded, fileType, version, path, false);
+      } catch (_) {
+        $("status").textContent = `unable to load ${path}`;
+        renderArchive();
+      }
     }
 
-    $("expandAll").addEventListener("click", () => setAllCollapsed(false));
-    $("collapseAll").addEventListener("click", () => setAllCollapsed(true));
-
-    function applyTheme(theme) {
-      const isLight = theme === "light";
-      document.body.dataset.theme = isLight ? "light" : "night";
-      $("themeToggle").textContent = isLight ? "night mode" : "light mode";
-      $("themeToggle").setAttribute("aria-pressed", String(isLight));
+    async function load() {
+      state.archive = await loadArchiveIndex();
+      state.archiveLoaded = true;
+      await loadCurrentSource($("fileType").value);
     }
 
-    applyTheme(localStorage.getItem("rxchie-theme") === "light" ? "light" : "night");
-    $("themeToggle").addEventListener("click", () => {
-      const nextTheme = document.body.dataset.theme === "light" ? "night" : "light";
-      localStorage.setItem("rxchie-theme", nextTheme);
-      applyTheme(nextTheme);
+    $("archiveSearch").addEventListener("input", renderArchive);
+    $("sourcePanel").addEventListener("click", () => $("sourcePanel").focus());
+    $("fileType").addEventListener("change", () => {
+      const selected = state.archive.find((entry) => archiveVersion(entry) === state.selectedArchive);
+      if (selected && !state.sourceIsCurrent) loadArchiveSource(selected, $("fileType").value);
+      else loadCurrentSource($("fileType").value);
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (!(event.ctrlKey || event.metaKey) || event.key.toLowerCase() !== "a") return;
+      if (document.activeElement !== $("sourcePanel") && !$("sourcePanel").contains(document.activeElement)) return;
+      event.preventDefault();
+      const selection = window.getSelection();
+      const range = document.createRange();
+      range.selectNodeContents($("sourceCode"));
+      selection.removeAllRanges();
+      selection.addRange(range);
+      $("sourcePanel").focus();
     });
 
     document.addEventListener("click", async (event) => {
@@ -489,6 +556,23 @@
       button.textContent = "copied";
       button.classList.add("copied");
       setTimeout(() => { button.textContent = "copy"; button.classList.remove("copied"); }, 1200);
+    });
+
+    function applyTheme(theme) {
+      const light = theme === "light";
+      document.body.dataset.theme = light ? "light" : "night";
+      const nextLabel = light ? "Switch to night mode" : "Switch to light mode";
+      $("themeToggle").innerHTML = `<span class="theme-icon" aria-hidden="true">${light ? "☾" : "☼"}</span><span class="sr-only">${nextLabel}</span>`;
+      $("themeToggle").setAttribute("aria-label", nextLabel);
+      $("themeToggle").setAttribute("title", nextLabel);
+      $("themeToggle").setAttribute("aria-pressed", String(light));
+    }
+
+    applyTheme(localStorage.getItem("rxchie-theme") === "light" ? "light" : "night");
+    $("themeToggle").addEventListener("click", () => {
+      const next = document.body.dataset.theme === "light" ? "night" : "light";
+      localStorage.setItem("rxchie-theme", next);
+      applyTheme(next);
     });
 
     load();

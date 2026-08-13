@@ -144,7 +144,7 @@
     "Offsets::Humanoid::NameDisplayDistance": 432,
     "Offsets::Humanoid::NameOcclusion": 436,
     "Offsets::Humanoid::PlatformStand": 197,
-    "Offsets::Humanoid::PlatformStatePointer": 1736957953,
+    "Offsets::Humanoid::PlatformStatePointer": 0,
     "Offsets::Humanoid::RequiresNeck": 477,
     "Offsets::Humanoid::RigType": 448,
     "Offsets::Humanoid::SeatPart": 264,
@@ -414,7 +414,8 @@
     "Offsets::MaterialLayer::MatFlags": 24,
     "Offsets::MaterialLayer::Param": 28,
     "Offsets::MaterialLayer::Flags2": 32,
-    "Offsets::MaterialLayer::ColorData": 36
+    "Offsets::MaterialLayer::ColorData": 36,
+    "Offsets::DataModel::Pointer": 146250584
   },
   "remote": {
     "ClientVersion": "version-ddf602d9cfe44005",
@@ -606,7 +607,7 @@
       "NameDisplayDistance": 432,
       "NameOcclusion": 436,
       "PlatformStand": 197,
-      "PlatformStatePointer": 1736957953,
+      "PlatformStatePointer": 0,
       "RequiresNeck": 477,
       "RigType": 448,
       "SeatPart": 264,

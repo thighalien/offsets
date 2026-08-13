@@ -6,8 +6,8 @@
 // remote         : https://offsets.imtheo.lol/
 // dumped with    : RXDump
 // Roblox version : version-ddf602d9cfe44005
-// dumped at      : 13/08/2026 01:14:26
-// total offsets  : 415
+// dumped at      : 13/08/2026 10:27:29
+// total offsets  : 419
 // =============================================================
 #include <cstdint>
 #include <string>
@@ -127,6 +127,7 @@ inline constexpr uintptr_t ToRenderView1 = 0x1c0;
 inline constexpr uintptr_t ToRenderView2 = 0x8;
 inline constexpr uintptr_t ToRenderView3 = 0x28;
 inline constexpr uintptr_t Workspace = 0x158;
+inline constexpr uintptr_t Pointer = 0x8B79B58;
 }
 namespace DepthOfFieldEffect {
 inline constexpr uintptr_t Enabled = 0xb0;
@@ -202,7 +203,7 @@ inline constexpr uintptr_t MoveToPoint = 0x164;
 inline constexpr uintptr_t NameDisplayDistance = 0x1b0;
 inline constexpr uintptr_t NameOcclusion = 0x1b4;
 inline constexpr uintptr_t PlatformStand = 0xc5;
-inline constexpr uintptr_t PlatformStatePointer = 0x6787e001;
+inline constexpr uintptr_t PlatformStatePointer = 0x0;
 inline constexpr uintptr_t RequiresNeck = 0x1dd;
 inline constexpr uintptr_t RigType = 0x1c0;
 inline constexpr uintptr_t SeatPart = 0x108;
@@ -463,11 +464,11 @@ inline constexpr uintptr_t NormalMap = 0x158;
 inline constexpr uintptr_t RoughnessMap = 0x188;
 }
 namespace TaskScheduler {
-inline constexpr uintptr_t JobEnd = 0xd0;
+inline constexpr uintptr_t JobEnd = 0xD0;
 inline constexpr uintptr_t JobName = 0x18;
-inline constexpr uintptr_t JobStart = 0xc8;
+inline constexpr uintptr_t JobStart = 0xC8;
 inline constexpr uintptr_t MaxFPS = 0xb0;
-inline constexpr uintptr_t Pointer = 0x88b64c8;
+inline constexpr uintptr_t Pointer = 0x88B64C8;
 }
 namespace Team {
 inline constexpr uintptr_t BrickColor = 0xb8;

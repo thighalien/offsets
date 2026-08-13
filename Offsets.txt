@@ -114,6 +114,7 @@
   ToRenderView2          = 0x8
   ToRenderView3          = 0x28
   Workspace              = 0x158
+  Pointer                = 0x8B79B58
 
 [DepthOfFieldEffect]
   Enabled                = 0xb0
@@ -189,7 +190,7 @@
   NameDisplayDistance    = 0x1b0
   NameOcclusion          = 0x1b4
   PlatformStand          = 0xc5
-  PlatformStatePointer   = 0x6787e001
+  PlatformStatePointer   = 0x0
   RequiresNeck           = 0x1dd
   RigType                = 0x1c0
   SeatPart               = 0x108
@@ -450,11 +451,11 @@
   RoughnessMap           = 0x188
 
 [TaskScheduler]
-  JobEnd                 = 0xd0
+  JobEnd                 = 0xD0
   JobName                = 0x18
-  JobStart               = 0xc8
+  JobStart               = 0xC8
   MaxFPS                 = 0xb0
-  Pointer                = 0x88b64c8
+  Pointer                = 0x88B64C8
 
 [Team]
   BrickColor             = 0xb8
