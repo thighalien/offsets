@@ -3,8 +3,8 @@
   "Roblox Version": "version-ddf602d9cfe44005",
   "Dumper Version": "1.0",
   "Dumped With": "RXDump",
-  "Dumped At": "13/08/2026 10:27:29",
-  "Total Offsets": 416,
+  "Dumped At": "14/08/2026 18:28:49",
+  "Total Offsets": 450,
   "Offsets": {
     "ClientVersion": "version-ddf602d9cfe44005",
     "AirProperties": {
@@ -196,7 +196,7 @@
       "NameDisplayDistance": 432,
       "NameOcclusion": 436,
       "PlatformStand": 197,
-      "PlatformStatePointer": 0,
+      "PlatformStatePointer": 1736957955,
       "RequiresNeck": 477,
       "RigType": 448,
       "SeatPart": 264,
@@ -461,7 +461,38 @@
       "JobName": 24,
       "JobStart": 200,
       "MaxFPS": 176,
-      "Pointer": 143353032
+      "Pointer": 143353032,
+      "Job_AnalyticsServiceJob": 1446260512792,
+      "Job_AnimatorParallelManagerTaskQueue": 1446258092824,
+      "Job_ClearUnusedLuaRefsJob": 1446381685784,
+      "Job_CollectionServiceJob": 1446305207448,
+      "Job_DataModelCharacterTaskQueue": 1446253196824,
+      "Job_Heartbeat": 1446260511744,
+      "Job_HttpRbxApiJob": 1446260508160,
+      "Job_HumanoidParallelManagerTaskQueue": 1446258090264,
+      "Job_LogServiceJob": 1446260510744,
+      "Job_LuaGc": 1446381686296,
+      "Job_LuauTelemetry": 1446381685272,
+      "Job_MemoryPrioritizationJob": 1446174098456,
+      "Job_None_Marshalled": 1446253196184,
+      "Job_NotifyAliveJob": 1446169959320,
+      "Job_PerformanceControlMultiResourceOrchestratorJob": 1446169958416,
+      "Job_PerformanceControlOrchestrator": 1446174099480,
+      "Job_Read_Marshalled": 1446253195544,
+      "Job_Replicator_ProcessPackets": 1446263504256,
+      "Job_SceneUpdaterTaskQueue": 1446409304856,
+      "Job_ScriptContextTaskQueue": 1446257691288,
+      "Job_Simulation": 1446260511232,
+      "Job_SlimReplicationTaskQueue": 1446258093464,
+      "Job_SmoothClusterTaskQueue": 1446409297816,
+      "Job_Sound": 1446260510224,
+      "Job_Streaming_Solver_V2": 1446256137360,
+      "Job_ThumbnailFetchJob": 1446255070424,
+      "Job_TimerTickerJob": 1446169955288,
+      "Job_Video": 1446263899672,
+      "Job_WaitingHybridScriptsJob": 1446381686808,
+      "Job_WorkspaceTaskQueue": 1446253194264,
+      "Job_Write_Marshalled": 1446253194904
     },
     "Team": {
       "BrickColor": 184
@@ -565,6 +596,11 @@
       "Param": 28,
       "Flags2": 32,
       "ColorData": 36
+    },
+    "D3D11": {
+      "RenderView": 3072,
+      "Device": 8,
+      "PresentIndex": 8
     }
   }
 }
