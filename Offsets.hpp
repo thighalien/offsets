@@ -5,8 +5,8 @@
 /* -------------------------------------------------------------
 /*  Dumped With     : RXDump
 /*  Roblox Version  : version-ddf602d9cfe44005
-/*  Dumped At       : 14/08/2026 18:28:49
-/*  Total Offsets   : 450
+/*  Dumped At       : 14/08/2026 19:14:39
+/*  Total Offsets   : 447
 /* -------------------------------------------------------------
 /*  credits         : offsets by theo - https://offsets.imtheo.lol/
 /* =============================================================
@@ -528,14 +528,16 @@ namespace Offsets {
         inline constexpr uintptr_t Pointer = 0x88B64C8;
         inline constexpr uintptr_t Job_AnalyticsServiceJob = 0x150BBD81818;
         inline constexpr uintptr_t Job_AnimatorParallelManagerTaskQueue = 0x150BBB32B18;
+        inline constexpr uintptr_t Job_AutomaticAssetCaptureSender_LocalizationService = 0x150BE796380;
         inline constexpr uintptr_t Job_ClearUnusedLuaRefsJob = 0x150C3110C18;
         inline constexpr uintptr_t Job_CollectionServiceJob = 0x150BE821498;
         inline constexpr uintptr_t Job_DataModelCharacterTaskQueue = 0x150BB687618;
+        inline constexpr uintptr_t Job_DynamicTranslationSender_LocalizationService = 0x150BE796080;
         inline constexpr uintptr_t Job_Heartbeat = 0x150BBD81400;
         inline constexpr uintptr_t Job_HttpRbxApiJob = 0x150BBD80600;
         inline constexpr uintptr_t Job_HumanoidParallelManagerTaskQueue = 0x150BBB32118;
+        inline constexpr uintptr_t Job_LocalizationTableAnalyticsSender_LocalizationService = 0x150BE795A80;
         inline constexpr uintptr_t Job_LogServiceJob = 0x150BBD81018;
-        inline constexpr uintptr_t Job_LuaGc = 0x150C3110E18;
         inline constexpr uintptr_t Job_LuauTelemetry = 0x150C3110A18;
         inline constexpr uintptr_t Job_MemoryPrioritizationJob = 0x150B6B18418;
         inline constexpr uintptr_t Job_None_Marshalled = 0x150BB687398;
@@ -543,18 +545,16 @@ namespace Offsets {
         inline constexpr uintptr_t Job_PerformanceControlMultiResourceOrchestratorJob = 0x150B6725810;
         inline constexpr uintptr_t Job_PerformanceControlOrchestrator = 0x150B6B18818;
         inline constexpr uintptr_t Job_Read_Marshalled = 0x150BB687118;
-        inline constexpr uintptr_t Job_Replicator_ProcessPackets = 0x150BC05BD80;
-        inline constexpr uintptr_t Job_SceneUpdaterTaskQueue = 0x150C4B67B18;
+        inline constexpr uintptr_t Job_RenderJob = 0x150B6616C00;
+        inline constexpr uintptr_t Job_SceneUpdaterTaskQueue = 0x150B6618298;
         inline constexpr uintptr_t Job_ScriptContextTaskQueue = 0x150BBAD0A98;
         inline constexpr uintptr_t Job_Simulation = 0x150BBD81200;
         inline constexpr uintptr_t Job_SlimReplicationTaskQueue = 0x150BBB32D98;
-        inline constexpr uintptr_t Job_SmoothClusterTaskQueue = 0x150C4B65F98;
         inline constexpr uintptr_t Job_Sound = 0x150BBD80E10;
-        inline constexpr uintptr_t Job_Streaming_Solver_V2 = 0x150BB955490;
+        inline constexpr uintptr_t Job_TextSafetyAnalyticsSender_LocalizationService = 0x150BE795D80;
         inline constexpr uintptr_t Job_ThumbnailFetchJob = 0x150BB850CD8;
         inline constexpr uintptr_t Job_TimerTickerJob = 0x150B6724BD8;
         inline constexpr uintptr_t Job_Video = 0x150BC0BC618;
-        inline constexpr uintptr_t Job_WaitingHybridScriptsJob = 0x150C3111018;
         inline constexpr uintptr_t Job_WorkspaceTaskQueue = 0x150BB686C18;
         inline constexpr uintptr_t Job_Write_Marshalled = 0x150BB686E98;
     }
@@ -677,12 +677,6 @@ namespace Offsets {
         inline constexpr uintptr_t Param = 0x1C;
         inline constexpr uintptr_t Flags2 = 0x20;
         inline constexpr uintptr_t ColorData = 0x24;
-    }
-
-    namespace D3D11 {
-        inline constexpr uintptr_t RenderView = 0xC00;
-        inline constexpr uintptr_t Device = 0x8;
-        inline constexpr uintptr_t PresentIndex = 0x8;
     }
 
 }
