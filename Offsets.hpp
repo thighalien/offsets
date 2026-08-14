@@ -5,8 +5,8 @@
 /* -------------------------------------------------------------
 /*  Dumped With     : RXDump
 /*  Roblox Version  : version-ddf602d9cfe44005
-/*  Dumped At       : 14/08/2026 19:14:39
-/*  Total Offsets   : 447
+/*  Dumped At       : 14/08/2026 19:45:32
+/*  Total Offsets   : 449
 /* -------------------------------------------------------------
 /*  credits         : offsets by theo - https://offsets.imtheo.lol/
 /* =============================================================
@@ -453,6 +453,8 @@ namespace Offsets {
 
     namespace ScriptContext {
         inline constexpr uintptr_t RequireBypass = 0x0;
+        inline constexpr uintptr_t Pointer = 0x150C3130080;
+        inline constexpr uintptr_t LuaState = 0xD8;
     }
 
     namespace Seat {

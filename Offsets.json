@@ -3,8 +3,8 @@
   "Roblox Version": "version-ddf602d9cfe44005",
   "Dumper Version": "1.0",
   "Dumped With": "RXDump",
-  "Dumped At": "14/08/2026 19:14:39",
-  "Total Offsets": 447,
+  "Dumped At": "14/08/2026 19:45:32",
+  "Total Offsets": 449,
   "Offsets": {
     "ClientVersion": "version-ddf602d9cfe44005",
     "AirProperties": {
@@ -397,7 +397,9 @@
       "Hash": 416
     },
     "ScriptContext": {
-      "RequireBypass": 0
+      "RequireBypass": 0,
+      "Pointer": 1446381813888,
+      "LuaState": 216
     },
     "Seat": {
       "Occupant": 528
